@@ -1,0 +1,9 @@
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.exe.config
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.exe
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.pdb
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csprojResolveAssemblyReference.cache
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.Properties.Resources.resources
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.GenerateResource.Cache
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.exe
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.pdb
+E:\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.FrmMain.resources
