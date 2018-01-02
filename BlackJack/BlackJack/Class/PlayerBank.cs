@@ -13,6 +13,9 @@ namespace BlackJack.Class
 
         }
 
+        /// <summary>
+        /// La simulation d'une banque
+        /// </summary>
         public override void play()
         {
             while(lstHand[0].Value < 17)
@@ -21,7 +24,7 @@ namespace BlackJack.Class
             }      
         }
 
-        public int getFirstCard()
+        public int getFirstCardValue()
         {
             return lstHand[0].getFirstCard().CardValue;
         }

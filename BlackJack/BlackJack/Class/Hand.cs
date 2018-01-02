@@ -8,22 +8,9 @@ namespace BlackJack.Class
 {
     class Hand
     {
-        public const int MAX_HAND_VALUE = 21;
         private List<Card> lstCard = new List<Card>();
-        private int value = 0;
-        
-        public int Value
-        {
-            get
-            {
-                return value;
-            }
 
-            set
-            {
-                this.value = value;
-            }
-        }
+        public int Value { get; set; } = 0;
 
         public Hand()
         {
@@ -35,15 +22,23 @@ namespace BlackJack.Class
             addCard(c);
         }
 
-        public void addCard(Card c)
+        /// <summary>
+        /// Ajoute une carte à la main
+        /// </summary>
+        /// <param name="newCard">La carte à ajouter</param>
+        public void addCard(Card newCard)
         {
-            lstCard.Add(c);
-            this.value += c.CardValue;
+            lstCard.Add(newCard);
+            Value += newCard.CardValue;
             if (Value > 21) {
                 testAs();
            }
         }
 
+        /// <summary>
+        /// Retire et retourne la dernière carte
+        /// </summary>
+        /// <returns></returns>
         public Card removeLastCard()
         {
             Card c = this.lstCard[lstCard.Count - 1];
@@ -51,35 +46,40 @@ namespace BlackJack.Class
             return c;
         }
 
-        public void reset()
-        {
-            lstCard.Clear();
-            this.value = 0;
-        }
-
+        /// <summary>
+        /// Vérifie si y a un As dans la main et le transforme en 1
+        /// </summary>
         private void testAs()
         {
             for (int i = 0; i < lstCard.Count; i++)
             {
-                if(lstCard[i].Equals(new Card("A",11)))
+                if(lstCard[i].Equals(new Card("A")) && lstCard[i].CardValue == 11)
                 {
                     lstCard[i].CardValue = lstCard[i].SecondValue;
-                    this.value -= 10;  
+                    Value -= 10;  
                     break;
                 }
             }
         }
 
+        /// <summary>
+        /// Retoure la première carte de la main
+        /// </summary>
+        /// <returns></returns>
         public Card getFirstCard()
         {
             return lstCard[0];
         }
 
+        /// <summary>
+        /// Vérification si la main à uniquement 2 carte identique 
+        /// </summary>
+        /// <returns></returns>
         public bool isSameCard()
         {
             return lstCard[0].Equals(lstCard[1]) && lstCard.Count == 2;
         }
-
+        
         public int getNbCard()
         {
             return lstCard.Count;

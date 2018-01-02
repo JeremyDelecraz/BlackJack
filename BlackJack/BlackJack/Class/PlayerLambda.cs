@@ -14,6 +14,9 @@ namespace BlackJack.Class
         {
         }
 
+        /// <summary>
+        /// La simulation d'un joueur lambda
+        /// </summary>
         public override void play()
         {
             for (int i = 0; i < lstHand.Count; i++)
@@ -25,7 +28,7 @@ namespace BlackJack.Class
                     testSplit(i);
                     handValue = lstHand[i].Value;
                 }
-                int firstCardBank = b.getFirstCard();
+                int firstCardBank = Bank.getFirstCardValue();
                 if (handValue <= 11 && handValue >= 9)
                 {
                     doubleBet(i);
@@ -43,7 +46,7 @@ namespace BlackJack.Class
         public override void bet()
         {
             lstBetValue.Add(BET);
-            cash -= BET;
+            Cash -= BET;
         }
     }
 }

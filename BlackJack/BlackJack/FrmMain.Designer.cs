@@ -52,17 +52,22 @@
             this.lblNbLoseValue = new System.Windows.Forms.Label();
             this.lblSabot = new System.Windows.Forms.Label();
             this.lblSabotValue = new System.Windows.Forms.Label();
+            this.lblGameIndex = new System.Windows.Forms.Label();
+            this.lblGameIndexValue = new System.Windows.Forms.Label();
+            this.lblNbTable = new System.Windows.Forms.Label();
+            this.nupNbTable = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbTurn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNbTable)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRestart
             // 
-            this.btnRestart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestart.Location = new System.Drawing.Point(12, 153);
+            this.btnRestart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRestart.Location = new System.Drawing.Point(12, 194);
             this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(180, 23);
+            this.btnRestart.Size = new System.Drawing.Size(162, 23);
             this.btnRestart.TabIndex = 1;
             this.btnRestart.Text = "Restart";
             this.btnRestart.UseVisualStyleBackColor = true;
@@ -94,6 +99,11 @@
             this.nupNbPlayer.Location = new System.Drawing.Point(114, 46);
             this.nupNbPlayer.Maximum = new decimal(new int[] {
             6,
+            0,
+            0,
+            0});
+            this.nupNbPlayer.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -202,10 +212,10 @@
             // 
             // btnStartStop
             // 
-            this.btnStartStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStartStop.Location = new System.Drawing.Point(198, 153);
+            this.btnStartStop.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnStartStop.Location = new System.Drawing.Point(180, 194);
             this.btnStartStop.Name = "btnStartStop";
-            this.btnStartStop.Size = new System.Drawing.Size(176, 23);
+            this.btnStartStop.Size = new System.Drawing.Size(171, 23);
             this.btnStartStop.TabIndex = 14;
             this.btnStartStop.Text = "Stop";
             this.btnStartStop.UseVisualStyleBackColor = true;
@@ -214,7 +224,7 @@
             // lblNbWin
             // 
             this.lblNbWin.AutoSize = true;
-            this.lblNbWin.Location = new System.Drawing.Point(30, 103);
+            this.lblNbWin.Location = new System.Drawing.Point(18, 138);
             this.lblNbWin.Name = "lblNbWin";
             this.lblNbWin.Size = new System.Drawing.Size(48, 13);
             this.lblNbWin.TabIndex = 15;
@@ -223,7 +233,7 @@
             // lblNbLose
             // 
             this.lblNbLose.AutoSize = true;
-            this.lblNbLose.Location = new System.Drawing.Point(267, 103);
+            this.lblNbLose.Location = new System.Drawing.Point(255, 138);
             this.lblNbLose.Name = "lblNbLose";
             this.lblNbLose.Size = new System.Drawing.Size(44, 13);
             this.lblNbLose.TabIndex = 16;
@@ -232,7 +242,7 @@
             // lblNbEqual
             // 
             this.lblNbEqual.AutoSize = true;
-            this.lblNbEqual.Location = new System.Drawing.Point(153, 103);
+            this.lblNbEqual.Location = new System.Drawing.Point(141, 138);
             this.lblNbEqual.Name = "lblNbEqual";
             this.lblNbEqual.Size = new System.Drawing.Size(39, 13);
             this.lblNbEqual.TabIndex = 17;
@@ -241,7 +251,7 @@
             // lblNbWinValue
             // 
             this.lblNbWinValue.AutoSize = true;
-            this.lblNbWinValue.Location = new System.Drawing.Point(109, 103);
+            this.lblNbWinValue.Location = new System.Drawing.Point(97, 138);
             this.lblNbWinValue.Name = "lblNbWinValue";
             this.lblNbWinValue.Size = new System.Drawing.Size(13, 13);
             this.lblNbWinValue.TabIndex = 18;
@@ -250,7 +260,7 @@
             // lblNbEqualValue
             // 
             this.lblNbEqualValue.AutoSize = true;
-            this.lblNbEqualValue.Location = new System.Drawing.Point(223, 103);
+            this.lblNbEqualValue.Location = new System.Drawing.Point(211, 138);
             this.lblNbEqualValue.Name = "lblNbEqualValue";
             this.lblNbEqualValue.Size = new System.Drawing.Size(13, 13);
             this.lblNbEqualValue.TabIndex = 19;
@@ -259,7 +269,7 @@
             // lblNbLoseValue
             // 
             this.lblNbLoseValue.AutoSize = true;
-            this.lblNbLoseValue.Location = new System.Drawing.Point(342, 103);
+            this.lblNbLoseValue.Location = new System.Drawing.Point(330, 138);
             this.lblNbLoseValue.Name = "lblNbLoseValue";
             this.lblNbLoseValue.Size = new System.Drawing.Size(13, 13);
             this.lblNbLoseValue.TabIndex = 20;
@@ -268,7 +278,7 @@
             // lblSabot
             // 
             this.lblSabot.AutoSize = true;
-            this.lblSabot.Location = new System.Drawing.Point(143, 127);
+            this.lblSabot.Location = new System.Drawing.Point(173, 162);
             this.lblSabot.Name = "lblSabot";
             this.lblSabot.Size = new System.Drawing.Size(35, 13);
             this.lblSabot.TabIndex = 21;
@@ -277,17 +287,70 @@
             // lblSabotValue
             // 
             this.lblSabotValue.AutoSize = true;
-            this.lblSabotValue.Location = new System.Drawing.Point(231, 127);
+            this.lblSabotValue.Location = new System.Drawing.Point(247, 162);
             this.lblSabotValue.Name = "lblSabotValue";
             this.lblSabotValue.Size = new System.Drawing.Size(13, 13);
             this.lblSabotValue.TabIndex = 22;
             this.lblSabotValue.Text = "0";
             // 
+            // lblGameIndex
+            // 
+            this.lblGameIndex.AutoSize = true;
+            this.lblGameIndex.Location = new System.Drawing.Point(29, 162);
+            this.lblGameIndex.Name = "lblGameIndex";
+            this.lblGameIndex.Size = new System.Drawing.Size(50, 13);
+            this.lblGameIndex.TabIndex = 23;
+            this.lblGameIndex.Text = "Game N°";
+            // 
+            // lblGameIndexValue
+            // 
+            this.lblGameIndexValue.AutoSize = true;
+            this.lblGameIndexValue.Location = new System.Drawing.Point(118, 162);
+            this.lblGameIndexValue.Name = "lblGameIndexValue";
+            this.lblGameIndexValue.Size = new System.Drawing.Size(16, 13);
+            this.lblGameIndexValue.TabIndex = 24;
+            this.lblGameIndexValue.Text = "-1";
+            // 
+            // lblNbTable
+            // 
+            this.lblNbTable.AutoSize = true;
+            this.lblNbTable.Location = new System.Drawing.Point(13, 100);
+            this.lblNbTable.Name = "lblNbTable";
+            this.lblNbTable.Size = new System.Drawing.Size(85, 13);
+            this.lblNbTable.TabIndex = 25;
+            this.lblNbTable.Text = "Nombre de table";
+            // 
+            // nupNbTable
+            // 
+            this.nupNbTable.Location = new System.Drawing.Point(114, 100);
+            this.nupNbTable.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nupNbTable.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nupNbTable.Name = "nupNbTable";
+            this.nupNbTable.Size = new System.Drawing.Size(78, 20);
+            this.nupNbTable.TabIndex = 26;
+            this.nupNbTable.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 188);
+            this.ClientSize = new System.Drawing.Size(363, 229);
+            this.Controls.Add(this.nupNbTable);
+            this.Controls.Add(this.lblNbTable);
+            this.Controls.Add(this.lblGameIndexValue);
+            this.Controls.Add(this.lblGameIndex);
             this.Controls.Add(this.lblSabotValue);
             this.Controls.Add(this.lblSabot);
             this.Controls.Add(this.lblNbLoseValue);
@@ -315,6 +378,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nupNbDeck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbTurn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nupNbTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +409,10 @@
         private System.Windows.Forms.Label lblNbLoseValue;
         private System.Windows.Forms.Label lblSabot;
         private System.Windows.Forms.Label lblSabotValue;
+        private System.Windows.Forms.Label lblGameIndex;
+        private System.Windows.Forms.Label lblGameIndexValue;
+        private System.Windows.Forms.Label lblNbTable;
+        private System.Windows.Forms.NumericUpDown nupNbTable;
     }
 }
 

@@ -8,76 +8,27 @@ namespace BlackJack.Class
 {
     class Card
     {
-        private string label;
-        private int cardValue;
-        private int secondValue;
-        private int sabotValue;
+        public string Label { get; set; }
+        public int CardValue { get; set; }
+        public int SecondValue { get; set; }
+        public int SabotValue { get; set; }
+        public int IndexImage { get; set; }
 
-        public string Label
+        public Card(string label, int sabotValue, int firstValue,int indexImage)
         {
-            get
-            {
-                return label;
-            }
-
-            set
-            {
-                label = value;
-            }
-        }
-        public int CardValue
-        {
-            get
-            {
-                return cardValue;
-            }
-
-            set
-            {
-                cardValue = value;
-            }
-        }
-        public int SecondValue
-        {
-            get
-            {
-                return secondValue;
-            }
-
-            set
-            {
-                secondValue = value;
-            }
-        }
-        public int SabotValue
-        {
-            get
-            {
-                return sabotValue;
-            }
-
-            set
-            {
-                sabotValue = value;
-            }
+            Label = label;
+            CardValue = firstValue;
+            SabotValue = sabotValue;
+            IndexImage = indexImage;
         }
 
-        public Card(string label,int firstValue, int sabotValue)
+        public Card(string label) : this(label,0,0,0)
         {
-            this.Label = label;
-            this.CardValue = firstValue;
-            this.SabotValue = sabotValue;
-        }
-
-        public Card(string label,int sabotValue)
-        {
-            this.label = label;
-            this.sabotValue = sabotValue;
         }
 
         public override bool Equals(Object c)
         {
-            return this.cardValue == ((Card)c).cardValue && this.label.Equals(((Card)c).Label);
+            return Label.Equals(((Card)c).Label);
         }
     }
 }
