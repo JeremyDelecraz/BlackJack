@@ -8,11 +8,11 @@ namespace BlackJack.Class
 {
     class PlayerPro : Player
     {
-        public static int SABOT_TO_STAY = 5;
-        public static int SABOT_TO_PLAY = 15;
-        private const int SABOT_TO_PLAY2 = 18;
-        private const int SABOT_TO_PLAY3 = 20;
-        private const int SABOT_TO_PLAY4 = 23;
+        public static int SABOT_TO_STAY = 3;
+        public static int SABOT_TO_PLAY = 10;
+        private const int SABOT_TO_PLAY2 = 13;
+        private const int SABOT_TO_PLAY3 = 15;
+        private const int SABOT_TO_PLAY4 = 17;
         private const int MAX_BET_STAY = 5;
         private const int MAX_BET = 10;
         private const int MAX_BET2 = 15;
@@ -34,20 +34,20 @@ namespace BlackJack.Class
                 for (int i = 0; i < lstHand.Count; i++)
                 {
                     testEnoughCardInHand(i);
-                    int bankFirstCardValue = Bank.getFirstCardValue();
+                    int bFirCaValue = Bank.getFirstCardValue();
                     int handValue = lstHand[i].Value;
                     Card plaFirC = lstHand[i].getFirstCard();
-                    if (equalCard(plaFirC,"A") || equalCard(plaFirC, "7") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20)
+                    if (equalCard(plaFirC,"A") || equalCard(plaFirC, "6") || equalCard(plaFirC, "7") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20)
                     {
-                        if (bankFirstCardValue <= 7 && bankFirstCardValue > 1)
+                        if (bFirCaValue <= 7 && bFirCaValue > 1)
                         {
                             testSplit(i);
                             handValue = lstHand[i].Value;
                         }
                     }
-                    if (Game.RealSabotValue >= SABOT_TO_STAY && handValue <= 11 && handValue >= 6)
+                    if (GameTable.RealSabotValue >= SABOT_TO_PLAY && handValue <= 11 && handValue > 6)
                     {
-                        if (bankFirstCardValue < 7 && bankFirstCardValue > 1)
+                        if (bFirCaValue < 7 && bFirCaValue > 1)
                         {
                             doubleBet(i);
                             return;
@@ -77,7 +77,7 @@ namespace BlackJack.Class
         /// </summary>
         public override void bet()
         {
-            if (Game.RealSabotValue >= SABOT_TO_STAY)
+            if (GameTable.RealSabotValue >= SABOT_TO_STAY)
             {
                 isPlaying = true;
                 if (setBetValue(SABOT_TO_PLAY4, MAX_BET4)) return;
@@ -100,7 +100,7 @@ namespace BlackJack.Class
         /// <returns></returns>
         private bool setBetValue(int sabotValue,int betValue)
         {
-            if (Game.RealSabotValue >= sabotValue)
+            if (GameTable.RealSabotValue >= sabotValue)
             {
                 lstBetValue.Add(Cash * betValue / 100);
                 Cash -= Cash * betValue / 100;

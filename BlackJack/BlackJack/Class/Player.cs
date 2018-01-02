@@ -15,18 +15,18 @@ namespace BlackJack.Class
         public int Cash { get; protected set; }
         protected List<int> lstBetValue = new List<int>();
         protected List<Hand> lstHand = new List<Hand>();
-        public Game Game { protected get; set; }
+        public Game GameTable { protected get; set; }
         public PlayerBank Bank { protected get; set; }
 
         public Player(Game g,PlayerBank b,int cash) {
-            this.Game = g;
+            this.GameTable = g;
             this.Bank = b;
             Cash = cash;
         }
 
         public Player(Game g)
         {
-            this.Game = g;
+            this.GameTable = g;
         }
 
         public virtual void play()
@@ -58,7 +58,7 @@ namespace BlackJack.Class
             Hand h = new Hand(lstHand[idHand].removeLastCard());
             lstHand.Add(h);
             lstHand[idHand].Value /= 2;
-            lstHand[idHand].addCard(Game.requestCard());
+            lstHand[idHand].addCard(GameTable.requestCard());
             lstBetValue.Add(lstBetValue[idHand]);
             testSplit(idHand);
         }
@@ -72,7 +72,7 @@ namespace BlackJack.Class
             if (!lstHand.Any()) {
                 lstHand.Add(new Hand());
             }
-            lstHand[idHand].addCard(Game.requestCard());
+            lstHand[idHand].addCard(GameTable.requestCard());
         }
         
         /// <summary>
@@ -166,7 +166,7 @@ namespace BlackJack.Class
         {
             if (lstHand[idHand].getNbCard() < 2)
             {
-                lstHand[idHand].addCard(Game.requestCard());
+                lstHand[idHand].addCard(GameTable.requestCard());
             }
         }
 

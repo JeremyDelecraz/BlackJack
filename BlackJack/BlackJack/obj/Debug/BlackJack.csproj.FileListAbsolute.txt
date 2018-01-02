@@ -39,3 +39,15 @@ F:\Ecole\HEG\5_Semestre\635-1_Probabilite\BlackJack\BlackJack\obj\Debug\BlackJac
 F:\Ecole\HEG\5_Semestre\635-1_Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache
 F:\Ecole\HEG\5_Semestre\635-1_Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.exe
 F:\Ecole\HEG\5_Semestre\635-1_Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.pdb
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.exe.config
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.exe
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.pdb
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csprojResolveAssemblyReference.cache
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.FrmMain.resources
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.Properties.Resources.resources
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.CardUC.resources
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.TableUC.resources
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.GenerateResource.Cache
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.exe
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.pdb

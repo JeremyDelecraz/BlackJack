@@ -85,7 +85,7 @@ namespace BlackJack.Class
         /// </summary>
         private void testEnoughCard()
         {
-            if(deck.getNbCard() < (nbPlayer + 2) * 3.5)
+            if(deck.getNbCard() < (nbPlayer + 2) * 4.5)
             {
                 deck.reset();
                 sabotValue = 0;
@@ -134,6 +134,7 @@ namespace BlackJack.Class
             if (playerPro != null) playerPro.resetHand();
         }
         
+        ///Valeur réel : Valeur du sabot / Nombre de carte restant
         /// <summary>
         /// Récupère et retourne une carte du paquet
         /// </summary>
@@ -142,7 +143,8 @@ namespace BlackJack.Class
         {
             Card c = deck.getCard();
             sabotValue += c.SabotValue;
-            RealSabotValue = sabotValue / deck.getNbDeck();
+            int nbDeck = deck.getNbDeck();
+            RealSabotValue = sabotValue / ((nbDeck > 0) ? nbDeck : 1);
             return c;
         }
 
@@ -163,7 +165,7 @@ namespace BlackJack.Class
         /// <param name="pPro"></param>
         public void addPlayerPro(PlayerPro pPro)
         {
-            pPro.Game = this;
+            pPro.GameTable = this;
             pPro.Bank = bank;
             this.playerPro = pPro;
         }

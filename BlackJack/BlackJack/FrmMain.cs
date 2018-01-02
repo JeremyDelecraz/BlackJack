@@ -13,7 +13,7 @@ namespace BlackJack
 {
     public partial class FrmMain : Form
     {
-        private const int CASH = 50000;
+        private const int CASH = 100000;
         private int nbTurn = 0;
         private List<Game> lstGame = new List<Game>();
         private PlayerPro playerPro;
@@ -37,7 +37,23 @@ namespace BlackJack
                 lstGame.Add(new Game((int)nupNbDeck.Value, (int)nupNbPlayer.Value, CASH));
             }
             playerPro = new PlayerPro(CASH);
-            tmrTurn.Enabled = true;
+            if (cbxTimer.Checked)
+                tmrTurn.Enabled = true;
+            else
+                playWithoutTimer();
+        }
+
+        private void playWithoutTimer()
+        {
+            for (int i = 0; i < (int)nupNbTurn.Value; i++)
+            {
+                testIdGame();
+                playEachGame();
+                if (idGame >= 0) nbTime++;
+                nbTurn++;
+            }
+            displayValue();
+            lblNbTurnValue.Text = nbTurn.ToString();
         }
 
         private void tmrTurn_Tick(object sender, EventArgs e)
@@ -104,9 +120,8 @@ namespace BlackJack
             lblNbWinValue.Text = playerPro.NbWin.ToString();
             lblNbEqualValue.Text = playerPro.NbEqual.ToString();
             lblNbLoseValue.Text = playerPro.NbLose.ToString();
-            lblSabotValue.Text = (idGame > 0) ? lstGame[idGame].RealSabotValue.ToString() : "0";
+            lblSabotValue.Text = (idGame >= 0) ? lstGame[idGame].RealSabotValue.ToString() : "0";
             lblGameIndexValue.Text = idGame.ToString();
-            this.Text = nbTime.ToString();
         }
 
         private void btnStartStop_Click(object sender, EventArgs e)

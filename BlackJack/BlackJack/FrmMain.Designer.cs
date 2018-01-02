@@ -56,6 +56,7 @@
             this.lblGameIndexValue = new System.Windows.Forms.Label();
             this.lblNbTable = new System.Windows.Forms.Label();
             this.nupNbTable = new System.Windows.Forms.NumericUpDown();
+            this.cbxTimer = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbTurn)).BeginInit();
@@ -68,7 +69,7 @@
             this.btnRestart.Location = new System.Drawing.Point(12, 194);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(162, 23);
-            this.btnRestart.TabIndex = 1;
+            this.btnRestart.TabIndex = 25;
             this.btnRestart.Text = "Restart";
             this.btnRestart.UseVisualStyleBackColor = true;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
@@ -79,7 +80,7 @@
             this.lblNbDeck.Location = new System.Drawing.Point(13, 21);
             this.lblNbDeck.Name = "lblNbDeck";
             this.lblNbDeck.Size = new System.Drawing.Size(95, 13);
-            this.lblNbDeck.TabIndex = 2;
+            this.lblNbDeck.TabIndex = 0;
             this.lblNbDeck.Text = "Nombre de paquet";
             // 
             // nupNbDeck
@@ -87,7 +88,7 @@
             this.nupNbDeck.Location = new System.Drawing.Point(114, 19);
             this.nupNbDeck.Name = "nupNbDeck";
             this.nupNbDeck.Size = new System.Drawing.Size(78, 20);
-            this.nupNbDeck.TabIndex = 3;
+            this.nupNbDeck.TabIndex = 1;
             this.nupNbDeck.Value = new decimal(new int[] {
             5,
             0,
@@ -109,7 +110,7 @@
             0});
             this.nupNbPlayer.Name = "nupNbPlayer";
             this.nupNbPlayer.Size = new System.Drawing.Size(78, 20);
-            this.nupNbPlayer.TabIndex = 4;
+            this.nupNbPlayer.TabIndex = 3;
             this.nupNbPlayer.Value = new decimal(new int[] {
             5,
             0,
@@ -128,7 +129,7 @@
             this.nupNbTurn.Size = new System.Drawing.Size(78, 20);
             this.nupNbTurn.TabIndex = 5;
             this.nupNbTurn.Value = new decimal(new int[] {
-            1000,
+            100,
             0,
             0,
             0});
@@ -139,7 +140,7 @@
             this.lblNbPlayer.Location = new System.Drawing.Point(13, 48);
             this.lblNbPlayer.Name = "lblNbPlayer";
             this.lblNbPlayer.Size = new System.Drawing.Size(91, 13);
-            this.lblNbPlayer.TabIndex = 6;
+            this.lblNbPlayer.TabIndex = 2;
             this.lblNbPlayer.Text = "Nombre de joueur";
             // 
             // lblNbTurn
@@ -148,43 +149,43 @@
             this.lblNbTurn.Location = new System.Drawing.Point(13, 75);
             this.lblNbTurn.Name = "lblNbTurn";
             this.lblNbTurn.Size = new System.Drawing.Size(80, 13);
-            this.lblNbTurn.TabIndex = 7;
+            this.lblNbTurn.TabIndex = 4;
             this.lblNbTurn.Text = "Nombre de tour";
             // 
             // lblCashBase
             // 
             this.lblCashBase.AutoSize = true;
-            this.lblCashBase.Location = new System.Drawing.Point(215, 48);
+            this.lblCashBase.Location = new System.Drawing.Point(216, 75);
             this.lblCashBase.Name = "lblCashBase";
             this.lblCashBase.Size = new System.Drawing.Size(72, 13);
-            this.lblCashBase.TabIndex = 8;
+            this.lblCashBase.TabIndex = 11;
             this.lblCashBase.Text = "Cash de base";
             // 
             // lblAccount
             // 
             this.lblAccount.AutoSize = true;
-            this.lblAccount.Location = new System.Drawing.Point(215, 75);
+            this.lblAccount.Location = new System.Drawing.Point(216, 102);
             this.lblAccount.Name = "lblAccount";
             this.lblAccount.Size = new System.Drawing.Size(31, 13);
-            this.lblAccount.TabIndex = 9;
+            this.lblAccount.TabIndex = 13;
             this.lblAccount.Text = "Total";
             // 
             // lblAccountValue
             // 
             this.lblAccountValue.AutoSize = true;
-            this.lblAccountValue.Location = new System.Drawing.Point(295, 75);
+            this.lblAccountValue.Location = new System.Drawing.Point(296, 102);
             this.lblAccountValue.Name = "lblAccountValue";
             this.lblAccountValue.Size = new System.Drawing.Size(37, 13);
-            this.lblAccountValue.TabIndex = 10;
+            this.lblAccountValue.TabIndex = 14;
             this.lblAccountValue.Text = "50000";
             // 
             // lblCashBaseValue
             // 
             this.lblCashBaseValue.AutoSize = true;
-            this.lblCashBaseValue.Location = new System.Drawing.Point(295, 48);
+            this.lblCashBaseValue.Location = new System.Drawing.Point(296, 75);
             this.lblCashBaseValue.Name = "lblCashBaseValue";
             this.lblCashBaseValue.Size = new System.Drawing.Size(37, 13);
-            this.lblCashBaseValue.TabIndex = 11;
+            this.lblCashBaseValue.TabIndex = 12;
             this.lblCashBaseValue.Text = "50000";
             // 
             // tmrTurn
@@ -195,19 +196,19 @@
             // lblNbTurnInfo
             // 
             this.lblNbTurnInfo.AutoSize = true;
-            this.lblNbTurnInfo.Location = new System.Drawing.Point(215, 21);
+            this.lblNbTurnInfo.Location = new System.Drawing.Point(216, 48);
             this.lblNbTurnInfo.Name = "lblNbTurnInfo";
             this.lblNbTurnInfo.Size = new System.Drawing.Size(44, 13);
-            this.lblNbTurnInfo.TabIndex = 12;
+            this.lblNbTurnInfo.TabIndex = 9;
             this.lblNbTurnInfo.Text = "Tour N°";
             // 
             // lblNbTurnValue
             // 
             this.lblNbTurnValue.AutoSize = true;
-            this.lblNbTurnValue.Location = new System.Drawing.Point(298, 25);
+            this.lblNbTurnValue.Location = new System.Drawing.Point(299, 52);
             this.lblNbTurnValue.Name = "lblNbTurnValue";
             this.lblNbTurnValue.Size = new System.Drawing.Size(13, 13);
-            this.lblNbTurnValue.TabIndex = 13;
+            this.lblNbTurnValue.TabIndex = 10;
             this.lblNbTurnValue.Text = "0";
             // 
             // btnStartStop
@@ -216,7 +217,7 @@
             this.btnStartStop.Location = new System.Drawing.Point(180, 194);
             this.btnStartStop.Name = "btnStartStop";
             this.btnStartStop.Size = new System.Drawing.Size(171, 23);
-            this.btnStartStop.TabIndex = 14;
+            this.btnStartStop.TabIndex = 26;
             this.btnStartStop.Text = "Stop";
             this.btnStartStop.UseVisualStyleBackColor = true;
             this.btnStartStop.Click += new System.EventHandler(this.btnStartStop_Click);
@@ -236,7 +237,7 @@
             this.lblNbLose.Location = new System.Drawing.Point(255, 138);
             this.lblNbLose.Name = "lblNbLose";
             this.lblNbLose.Size = new System.Drawing.Size(44, 13);
-            this.lblNbLose.TabIndex = 16;
+            this.lblNbLose.TabIndex = 19;
             this.lblNbLose.Text = "Perdant";
             // 
             // lblNbEqual
@@ -254,7 +255,7 @@
             this.lblNbWinValue.Location = new System.Drawing.Point(97, 138);
             this.lblNbWinValue.Name = "lblNbWinValue";
             this.lblNbWinValue.Size = new System.Drawing.Size(13, 13);
-            this.lblNbWinValue.TabIndex = 18;
+            this.lblNbWinValue.TabIndex = 16;
             this.lblNbWinValue.Text = "0";
             // 
             // lblNbEqualValue
@@ -263,7 +264,7 @@
             this.lblNbEqualValue.Location = new System.Drawing.Point(211, 138);
             this.lblNbEqualValue.Name = "lblNbEqualValue";
             this.lblNbEqualValue.Size = new System.Drawing.Size(13, 13);
-            this.lblNbEqualValue.TabIndex = 19;
+            this.lblNbEqualValue.TabIndex = 18;
             this.lblNbEqualValue.Text = "0";
             // 
             // lblNbLoseValue
@@ -281,7 +282,7 @@
             this.lblSabot.Location = new System.Drawing.Point(173, 162);
             this.lblSabot.Name = "lblSabot";
             this.lblSabot.Size = new System.Drawing.Size(35, 13);
-            this.lblSabot.TabIndex = 21;
+            this.lblSabot.TabIndex = 23;
             this.lblSabot.Text = "Sabot";
             // 
             // lblSabotValue
@@ -290,7 +291,7 @@
             this.lblSabotValue.Location = new System.Drawing.Point(247, 162);
             this.lblSabotValue.Name = "lblSabotValue";
             this.lblSabotValue.Size = new System.Drawing.Size(13, 13);
-            this.lblSabotValue.TabIndex = 22;
+            this.lblSabotValue.TabIndex = 24;
             this.lblSabotValue.Text = "0";
             // 
             // lblGameIndex
@@ -299,7 +300,7 @@
             this.lblGameIndex.Location = new System.Drawing.Point(29, 162);
             this.lblGameIndex.Name = "lblGameIndex";
             this.lblGameIndex.Size = new System.Drawing.Size(50, 13);
-            this.lblGameIndex.TabIndex = 23;
+            this.lblGameIndex.TabIndex = 21;
             this.lblGameIndex.Text = "Game N°";
             // 
             // lblGameIndexValue
@@ -308,7 +309,7 @@
             this.lblGameIndexValue.Location = new System.Drawing.Point(118, 162);
             this.lblGameIndexValue.Name = "lblGameIndexValue";
             this.lblGameIndexValue.Size = new System.Drawing.Size(16, 13);
-            this.lblGameIndexValue.TabIndex = 24;
+            this.lblGameIndexValue.TabIndex = 22;
             this.lblGameIndexValue.Text = "-1";
             // 
             // lblNbTable
@@ -317,7 +318,7 @@
             this.lblNbTable.Location = new System.Drawing.Point(13, 100);
             this.lblNbTable.Name = "lblNbTable";
             this.lblNbTable.Size = new System.Drawing.Size(85, 13);
-            this.lblNbTable.TabIndex = 25;
+            this.lblNbTable.TabIndex = 6;
             this.lblNbTable.Text = "Nombre de table";
             // 
             // nupNbTable
@@ -335,18 +336,30 @@
             0});
             this.nupNbTable.Name = "nupNbTable";
             this.nupNbTable.Size = new System.Drawing.Size(78, 20);
-            this.nupNbTable.TabIndex = 26;
+            this.nupNbTable.TabIndex = 7;
             this.nupNbTable.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
             // 
+            // cbxTimer
+            // 
+            this.cbxTimer.AutoSize = true;
+            this.cbxTimer.Location = new System.Drawing.Point(219, 22);
+            this.cbxTimer.Name = "cbxTimer";
+            this.cbxTimer.Size = new System.Drawing.Size(52, 17);
+            this.cbxTimer.TabIndex = 8;
+            this.cbxTimer.Text = "Timer";
+            this.cbxTimer.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
+            this.AcceptButton = this.btnRestart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 229);
+            this.Controls.Add(this.cbxTimer);
             this.Controls.Add(this.nupNbTable);
             this.Controls.Add(this.lblNbTable);
             this.Controls.Add(this.lblGameIndexValue);
@@ -413,6 +426,7 @@
         private System.Windows.Forms.Label lblGameIndexValue;
         private System.Windows.Forms.Label lblNbTable;
         private System.Windows.Forms.NumericUpDown nupNbTable;
+        private System.Windows.Forms.CheckBox cbxTimer;
     }
 }
 

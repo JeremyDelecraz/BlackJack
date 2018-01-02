@@ -124,9 +124,12 @@ namespace BlackJack.Class
             return lstCard.Count;
         }
 
-        public double getNbDeck()
+        public int getNbDeck()
         {
-            return (double)lstCard.Count / (double)NB_CARD_ONE_DECK;
+            Double value = (Double)lstCard.Count / (Double)NB_CARD_ONE_DECK;
+            int valueInt = (int)Math.Round(value);
+            return valueInt;
+
         }
     }
 }
