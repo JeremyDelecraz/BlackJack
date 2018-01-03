@@ -57,6 +57,7 @@
             this.lblNbTable = new System.Windows.Forms.Label();
             this.nupNbTable = new System.Windows.Forms.NumericUpDown();
             this.cbxTimer = new System.Windows.Forms.CheckBox();
+            this.gbxHand = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbDeck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupNbTurn)).BeginInit();
@@ -66,7 +67,7 @@
             // btnRestart
             // 
             this.btnRestart.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRestart.Location = new System.Drawing.Point(12, 194);
+            this.btnRestart.Location = new System.Drawing.Point(12, 288);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(162, 23);
             this.btnRestart.TabIndex = 25;
@@ -190,7 +191,7 @@
             // 
             // tmrTurn
             // 
-            this.tmrTurn.Interval = 1;
+            this.tmrTurn.Interval = 1000;
             this.tmrTurn.Tick += new System.EventHandler(this.tmrTurn_Tick);
             // 
             // lblNbTurnInfo
@@ -214,7 +215,7 @@
             // btnStartStop
             // 
             this.btnStartStop.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStartStop.Location = new System.Drawing.Point(180, 194);
+            this.btnStartStop.Location = new System.Drawing.Point(180, 288);
             this.btnStartStop.Name = "btnStartStop";
             this.btnStartStop.Size = new System.Drawing.Size(171, 23);
             this.btnStartStop.TabIndex = 26;
@@ -353,12 +354,22 @@
             this.cbxTimer.Text = "Timer";
             this.cbxTimer.UseVisualStyleBackColor = true;
             // 
+            // gbxHand
+            // 
+            this.gbxHand.Location = new System.Drawing.Point(376, 21);
+            this.gbxHand.Name = "gbxHand";
+            this.gbxHand.Size = new System.Drawing.Size(613, 290);
+            this.gbxHand.TabIndex = 27;
+            this.gbxHand.TabStop = false;
+            this.gbxHand.Text = "Main du banquier et joueur Pro";
+            // 
             // FrmMain
             // 
             this.AcceptButton = this.btnRestart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 229);
+            this.ClientSize = new System.Drawing.Size(1001, 323);
+            this.Controls.Add(this.gbxHand);
             this.Controls.Add(this.cbxTimer);
             this.Controls.Add(this.nupNbTable);
             this.Controls.Add(this.lblNbTable);
@@ -427,6 +438,7 @@
         private System.Windows.Forms.Label lblNbTable;
         private System.Windows.Forms.NumericUpDown nupNbTable;
         private System.Windows.Forms.CheckBox cbxTimer;
+        private System.Windows.Forms.GroupBox gbxHand;
     }
 }
 

@@ -68,6 +68,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HandUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HandUC.Designer.cs">
+      <DependentUpon>HandUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CardUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HandUC.resx">
+      <DependentUpon>HandUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CardUC.resx">
       <DependentUpon>CardUC.cs</DependentUpon>

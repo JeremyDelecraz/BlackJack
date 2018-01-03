@@ -95,7 +95,6 @@
             // 
             // pbxCard
             // 
-            this.pbxCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxCard.InitialImage = null;
             this.pbxCard.Location = new System.Drawing.Point(0, 0);
             this.pbxCard.Name = "pbxCard";
@@ -110,7 +109,6 @@
             this.Controls.Add(this.pbxCard);
             this.Name = "CardUC";
             this.Size = new System.Drawing.Size(50, 73);
-            this.Load += new System.EventHandler(this.CardUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxCard)).EndInit();
             this.ResumeLayout(false);
 

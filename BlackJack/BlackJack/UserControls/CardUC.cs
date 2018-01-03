@@ -17,14 +17,9 @@ namespace BlackJack.UserControls
             InitializeComponent();
         }
 
-        private void CardUC_Load(object sender, EventArgs e)
-        {
-            this.pbxCard.Image = imgListCard.Images[0];
-        }
-
         public void setCard(int id)
         {
-            this.pbxCard.Image = imgListCard.Images[id];
+            this.pbxCard.BackgroundImage = imgListCard.Images[id];
         }
     }
 }

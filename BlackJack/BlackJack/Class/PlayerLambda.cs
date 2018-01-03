@@ -19,14 +19,14 @@ namespace BlackJack.Class
         /// </summary>
         public override void play()
         {
-            for (int i = 0; i < lstHand.Count; i++)
+            for (int i = 0; i < LstHand.Count; i++)
             {
                 testEnoughCardInHand(i);
-                int handValue = lstHand[i].Value;
+                int handValue = LstHand[i].Value;
                 if (handValue >= 20)
                 {
                     testSplit(i);
-                    handValue = lstHand[i].Value;
+                    handValue = LstHand[i].Value;
                 }
                 int firstCardBank = Bank.getFirstCardValue();
                 if (handValue <= 11 && handValue >= 9)
@@ -37,7 +37,7 @@ namespace BlackJack.Class
                 while (handValue <= 11)
                 {
                     addCard(i);
-                    handValue = lstHand[i].Value;
+                    handValue = LstHand[i].Value;
                 }
                 if (firstCardBank >= 8 && handValue <= 13) { addCard(i); }
             }

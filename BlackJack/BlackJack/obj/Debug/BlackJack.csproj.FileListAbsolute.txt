@@ -51,3 +51,4 @@ D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.c
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.exe
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.pdb
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.HandUC.resources

@@ -31,18 +31,18 @@ namespace BlackJack.Class
         {
             if (isPlaying)
             {
-                for (int i = 0; i < lstHand.Count; i++)
+                for (int i = 0; i < LstHand.Count; i++)
                 {
                     testEnoughCardInHand(i);
                     int bFirCaValue = Bank.getFirstCardValue();
-                    int handValue = lstHand[i].Value;
-                    Card plaFirC = lstHand[i].getFirstCard();
+                    int handValue = LstHand[i].Value;
+                    Card plaFirC = LstHand[i].getFirstCard();
                     if (equalCard(plaFirC,"A") || equalCard(plaFirC, "6") || equalCard(plaFirC, "7") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20)
                     {
                         if (bFirCaValue <= 7 && bFirCaValue > 1)
                         {
                             testSplit(i);
-                            handValue = lstHand[i].Value;
+                            handValue = LstHand[i].Value;
                         }
                     }
                     if (GameTable.RealSabotValue >= SABOT_TO_PLAY && handValue <= 11 && handValue > 6)
@@ -53,7 +53,7 @@ namespace BlackJack.Class
                             return;
                         }
                     }
-                    while (lstHand[i].Value <= 11)
+                    while (LstHand[i].Value <= 11)
                     {
                         addCard(i);
                     }

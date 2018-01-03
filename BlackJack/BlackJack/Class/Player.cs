@@ -13,8 +13,8 @@ namespace BlackJack.Class
         public int NbLose { get; private set; } = 0;
         public int NbEqual { get; private set; } = 0;
         public int Cash { get; protected set; }
+        public List<Hand> LstHand { get; protected set; } = new List<Hand>();
         protected List<int> lstBetValue = new List<int>();
-        protected List<Hand> lstHand = new List<Hand>();
         public Game GameTable { protected get; set; }
         public PlayerBank Bank { protected get; set; }
 
@@ -43,7 +43,7 @@ namespace BlackJack.Class
         /// <param name="idHand">Id de la main</param>
         public void testSplit(int idHand)
         {
-            if (lstHand[idHand].isSameCard())
+            if (LstHand[idHand].isSameCard())
             {
                 split(idHand);
             }
@@ -55,10 +55,10 @@ namespace BlackJack.Class
         /// <param name="idHand">Id de la main</param>
         public void split(int idHand)
         {
-            Hand h = new Hand(lstHand[idHand].removeLastCard());
-            lstHand.Add(h);
-            lstHand[idHand].Value /= 2;
-            lstHand[idHand].addCard(GameTable.requestCard());
+            Hand h = new Hand(LstHand[idHand].removeAndGetLastCard());
+            LstHand.Add(h);
+            LstHand[idHand].Value /= 2;
+            LstHand[idHand].addCard(GameTable.requestCard());
             lstBetValue.Add(lstBetValue[idHand]);
             testSplit(idHand);
         }
@@ -69,10 +69,10 @@ namespace BlackJack.Class
         /// <param name="idHand">Id de la main</param>
         public void addCard(int idHand)
         {
-            if (!lstHand.Any()) {
-                lstHand.Add(new Hand());
+            if (!LstHand.Any()) {
+                LstHand.Add(new Hand());
             }
-            lstHand[idHand].addCard(GameTable.requestCard());
+            LstHand[idHand].addCard(GameTable.requestCard());
         }
         
         /// <summary>
@@ -82,11 +82,11 @@ namespace BlackJack.Class
         /// <param name="nbCardBank">Le nombre de carte de la banque</param>
         public void verifWinLose(int bankHandValue,int nbCardBank)
         {
-            for (int i = 0; i < lstHand.Count; i++)
+            for (int i = 0; i < LstHand.Count; i++)
             {
-                int handValue = lstHand[i].Value;
+                int handValue = LstHand[i].Value;
                 if (handValue > BLACKJACK) { loseCash(i); return; }
-                if (handValue == BLACKJACK && lstHand[i].getNbCard() == 2 && lstHand.Count == 1) { winBlackJack(i); return; }
+                if (handValue == BLACKJACK && LstHand[i].getNbCard() == 2 && LstHand.Count == 1) { winBlackJack(i); return; }
                 if (bankHandValue > BLACKJACK && handValue <= BLACKJACK) { winCash(i); return; }
                 if (bankHandValue == BLACKJACK && nbCardBank == 2) { loseCash(i); return; }
                 if (bankHandValue == handValue) { equalCash(i); return; }
@@ -143,7 +143,7 @@ namespace BlackJack.Class
         /// </summary>
         public void resetHand()
         {
-            lstHand.Clear();
+            LstHand.Clear();
             lstBetValue.Clear();
         }
 
@@ -164,9 +164,9 @@ namespace BlackJack.Class
         /// <param name="idHand"></param>
         public void testEnoughCardInHand(int idHand)
         {
-            if (lstHand[idHand].getNbCard() < 2)
+            if (LstHand[idHand].getNbCard() < 2)
             {
-                lstHand[idHand].addCard(GameTable.requestCard());
+                LstHand[idHand].addCard(GameTable.requestCard());
             }
         }
 
@@ -177,7 +177,7 @@ namespace BlackJack.Class
         /// <returns></returns>
         public int getHandValue(int idHand)
         {
-            return lstHand[idHand].Value;
+            return LstHand[idHand].Value;
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace BlackJack.Class
         /// <returns></returns>
         public int getNbCard(int idHand)
         {
-            return lstHand[idHand].getNbCard();
+            return LstHand[idHand].getNbCard();
         }
     }
 }

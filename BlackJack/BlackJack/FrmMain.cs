@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlackJack.Class;
+using BlackJack.UserControls;
 
 namespace BlackJack
 {
@@ -105,7 +106,7 @@ namespace BlackJack
             }
             else if (lstGame[idGame].RealSabotValue < PlayerPro.SABOT_TO_STAY)
             {
-                PlayerPro pTest = lstGame[idGame].removePlayerPro();
+                PlayerPro pTest = lstGame[idGame].removeAndGetPlayerPro();
                 idGame = getGameIndMaxSabotValue();
                 if (idGame >= 0)
                 {
@@ -122,11 +123,47 @@ namespace BlackJack
             lblNbLoseValue.Text = playerPro.NbLose.ToString();
             lblSabotValue.Text = (idGame >= 0) ? lstGame[idGame].RealSabotValue.ToString() : "0";
             lblGameIndexValue.Text = idGame.ToString();
+            displayCard();
         }
 
         private void btnStartStop_Click(object sender, EventArgs e)
         {
             tmrTurn.Enabled = !tmrTurn.Enabled;
+        }
+
+        private void displayCard()
+        {
+            removeHand();
+            if (idGame >= 0)
+            {
+                int x = 20;
+                int dist = 150;
+                int yBank = 20;
+                int yPro = 130;
+                Hand handBank = lstGame[idGame].getBankHand();
+                List<Hand> lstHandPlPro = lstGame[idGame].getPlayerProHand();
+
+                Text = handBank.Value.ToString() + " ||| ";
+                displayOneHand(x, yBank, handBank);
+                for (int i = 0; i < lstHandPlPro.Count; i++)
+                {
+                    displayOneHand(x + i * dist, yPro, lstHandPlPro[i]);
+                    Text += lstHandPlPro[i].Value.ToString() + " | ";
+                }
+            }
+        }
+
+        private void removeHand()
+        {
+            gbxHand.Controls.Clear();
+        }
+
+        private void displayOneHand(int x, int y,Hand h)
+        {
+            HandUC handUC = new HandUC();
+            handUC.setCard(h.getLstIndexImage(),h.Value);
+            handUC.Location = new Point(x,y);
+            gbxHand.Controls.Add(handUC);
         }
     }
 }

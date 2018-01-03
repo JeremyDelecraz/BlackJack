@@ -18,7 +18,7 @@ namespace BlackJack.Class
         /// </summary>
         public override void play()
         {
-            while(lstHand[0].Value < 17)
+            while(LstHand[0].Value < 17)
             {
                 addCard(0);
             }      
@@ -26,7 +26,7 @@ namespace BlackJack.Class
 
         public int getFirstCardValue()
         {
-            return lstHand[0].getFirstCard().CardValue;
+            return LstHand[0].getFirstCard().CardValue;
         }
     }
 }

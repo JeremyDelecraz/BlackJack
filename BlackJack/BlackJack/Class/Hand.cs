@@ -8,7 +8,7 @@ namespace BlackJack.Class
 {
     class Hand
     {
-        private List<Card> lstCard = new List<Card>();
+        public List<Card> LstCard { get; private set; } = new List<Card>();
 
         public int Value { get; set; } = 0;
 
@@ -28,7 +28,7 @@ namespace BlackJack.Class
         /// <param name="newCard">La carte à ajouter</param>
         public void addCard(Card newCard)
         {
-            lstCard.Add(newCard);
+            LstCard.Add(newCard);
             Value += newCard.CardValue;
             if (Value > 21) {
                 testAs();
@@ -39,10 +39,10 @@ namespace BlackJack.Class
         /// Retire et retourne la dernière carte
         /// </summary>
         /// <returns></returns>
-        public Card removeLastCard()
+        public Card removeAndGetLastCard()
         {
-            Card c = this.lstCard[lstCard.Count - 1];
-            this.lstCard.RemoveAt(lstCard.Count - 1);
+            Card c = this.LstCard[LstCard.Count - 1];
+            this.LstCard.RemoveAt(LstCard.Count - 1);
             return c;
         }
 
@@ -51,11 +51,11 @@ namespace BlackJack.Class
         /// </summary>
         private void testAs()
         {
-            for (int i = 0; i < lstCard.Count; i++)
+            for (int i = 0; i < LstCard.Count; i++)
             {
-                if(lstCard[i].Equals(new Card("A")) && lstCard[i].CardValue == 11)
+                if(LstCard[i].Equals(new Card("A")) && LstCard[i].CardValue == 11)
                 {
-                    lstCard[i].CardValue = lstCard[i].SecondValue;
+                    LstCard[i].CardValue = LstCard[i].SecondValue;
                     Value -= 10;  
                     break;
                 }
@@ -68,7 +68,7 @@ namespace BlackJack.Class
         /// <returns></returns>
         public Card getFirstCard()
         {
-            return lstCard[0];
+            return LstCard[0];
         }
 
         /// <summary>
@@ -77,12 +77,22 @@ namespace BlackJack.Class
         /// <returns></returns>
         public bool isSameCard()
         {
-            return lstCard[0].Equals(lstCard[1]) && lstCard.Count == 2;
+            return LstCard[0].Equals(LstCard[1]) && LstCard.Count == 2;
         }
         
         public int getNbCard()
         {
-            return lstCard.Count;
+            return LstCard.Count;
+        }
+
+        public List<int> getLstIndexImage()
+        {
+            List<int> lstIndexImage = new List<int>();
+            for (int i = 0; i < LstCard.Count; i++)
+            {
+                lstIndexImage.Add(LstCard[i].IndexImage);
+            }
+            return lstIndexImage;
         }
     }
 }

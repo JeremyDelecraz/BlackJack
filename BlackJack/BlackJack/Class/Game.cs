@@ -46,12 +46,12 @@ namespace BlackJack.Class
         /// </summary>
         public void play()
         {
+            replay();
             testEnoughCard();
             betTurnByTurn();
             distributeCard();
             playTurnByTurn();
             verifWinLose();
-            replay();
         }
 
         /// <summary>
@@ -114,11 +114,13 @@ namespace BlackJack.Class
         /// </summary>
         private void verifWinLose()
         {
+            int bHandValue = bank.getHandValue(0);
+            int bNbCard = bank.getNbCard(0);
             for (int i = 0; i < lstPlayer.Count; i++)
             {
-                lstPlayer[i].verifWinLose(bank.getHandValue(0),bank.getNbCard(0));
+                lstPlayer[i].verifWinLose(bHandValue, bNbCard);
             }
-            if (playerPro != null && playerPro.isPlaying) { playerPro.verifWinLose(bank.getHandValue(0), bank.getNbCard(0)); }
+            if (playerPro != null && playerPro.isPlaying) { playerPro.verifWinLose(bHandValue, bNbCard); }
         }
         
         /// <summary>
@@ -152,7 +154,7 @@ namespace BlackJack.Class
         /// Vire le joueur pro de la table
         /// </summary>
         /// <returns></returns>
-        public PlayerPro removePlayerPro()
+        public PlayerPro removeAndGetPlayerPro()
         {
             PlayerPro p = playerPro;
             playerPro = null;
@@ -168,6 +170,16 @@ namespace BlackJack.Class
             pPro.GameTable = this;
             pPro.Bank = bank;
             this.playerPro = pPro;
+        }
+
+        public List<Hand> getPlayerProHand()
+        {
+            return playerPro.LstHand;
+        }
+
+        public Hand getBankHand()
+        {
+            return bank.LstHand[0];
         }
     }
 }
