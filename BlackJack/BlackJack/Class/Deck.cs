@@ -10,7 +10,7 @@ namespace BlackJack.Class
     {
         private List<String> LST_ONE_COLOR_DECK = new List<string> {"2","3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
         private const int NB_COLOR_DECK = 4;
-        private const int NB_CARD_ONE_DECK = 52;
+        public static int NB_CARD_ONE_DECK = 52;
         private List<Card> lstCard;
         private int nbDeck;
 
@@ -124,12 +124,9 @@ namespace BlackJack.Class
             return lstCard.Count;
         }
 
-        public int getNbDeck()
+        public double getNbDeck()
         {
-            Double value = (Double)lstCard.Count / (Double)NB_CARD_ONE_DECK;
-            int valueInt = (int)Math.Round(value);
-            return valueInt;
-
+            return (Double)lstCard.Count / (Double)NB_CARD_ONE_DECK;
         }
     }
 }

@@ -13,10 +13,10 @@ namespace BlackJack.Class
         private const int SABOT_TO_PLAY2 = 13;
         private const int SABOT_TO_PLAY3 = 15;
         private const int SABOT_TO_PLAY4 = 17;
-        private const int MAX_BET_STAY = 5;
-        private const int MAX_BET = 10;
-        private const int MAX_BET2 = 15;
-        private const int MAX_BET3 = 20;
+        private const int MAX_BET_STAY = 2;
+        private const int MAX_BET = 6;
+        private const int MAX_BET2 = 10;
+        private const int MAX_BET3 = 15;
         private const int MAX_BET4 = 25;
         public bool isPlaying = true;
 
@@ -31,15 +31,16 @@ namespace BlackJack.Class
         {
             if (isPlaying)
             {
+                int bFirCaValue = Bank.getFirstCardValue();
+                insurance();
                 for (int i = 0; i < LstHand.Count; i++)
                 {
                     testEnoughCardInHand(i);
-                    int bFirCaValue = Bank.getFirstCardValue();
                     int handValue = LstHand[i].Value;
                     Card plaFirC = LstHand[i].getFirstCard();
-                    if (equalCard(plaFirC,"A") || equalCard(plaFirC, "6") || equalCard(plaFirC, "7") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20)
+                    if (GameTable.RealSabotValue >= SABOT_TO_PLAY && (equalCard(plaFirC,"A") || equalCard(plaFirC, "6") || equalCard(plaFirC, "7") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20))
                     {
-                        if (bFirCaValue <= 7 && bFirCaValue > 1)
+                        if (bFirCaValue < 7 && bFirCaValue > 3)
                         {
                             testSplit(i);
                             handValue = LstHand[i].Value;
@@ -47,7 +48,7 @@ namespace BlackJack.Class
                     }
                     if (GameTable.RealSabotValue >= SABOT_TO_PLAY && handValue <= 11 && handValue > 6)
                     {
-                        if (bFirCaValue < 7 && bFirCaValue > 1)
+                        if (bFirCaValue < 7 && bFirCaValue > 3)
                         {
                             doubleBet(i);
                             return;
@@ -57,6 +58,23 @@ namespace BlackJack.Class
                     {
                         addCard(i);
                     }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Lorsque la première carte du banquier est un As, toujours prendre une assurance
+        /// </summary>
+        private void insurance()
+        {
+            if (GameTable.RealSabotValue >= SABOT_TO_STAY)
+            {
+                Card bFirCard = Bank.getFirstCard();
+                TakingInsurance = equalCard(bFirCard, "A");
+                if (TakingInsurance)
+                {
+                    BetValueInsurance = lstBetValue[0] / 2;
+                    Cash -= BetValueInsurance;
                 }
             }
         }
@@ -77,14 +95,14 @@ namespace BlackJack.Class
         /// </summary>
         public override void bet()
         {
-            if (GameTable.RealSabotValue >= SABOT_TO_STAY)
+            if (GameTable.RealSabotValue >= SABOT_TO_PLAY)
             {
                 isPlaying = true;
-                if (setBetValue(SABOT_TO_PLAY4, MAX_BET4)) return;
+                /*if (setBetValue(SABOT_TO_PLAY4, MAX_BET4)) return;
                 if (setBetValue(SABOT_TO_PLAY3, MAX_BET3)) return;
-                if (setBetValue(SABOT_TO_PLAY2, MAX_BET2)) return;
-                if (setBetValue(SABOT_TO_PLAY, MAX_BET)) return;
-                if (setBetValue(SABOT_TO_STAY, MAX_BET_STAY)) return;
+                if (setBetValue(SABOT_TO_PLAY2, MAX_BET2)) return;*/
+                if (setBetValue(SABOT_TO_PLAY, MAX_BET4)) return;
+                //if (setBetValue(SABOT_TO_STAY, MAX_BET_STAY)) return;
             }
             else
             {

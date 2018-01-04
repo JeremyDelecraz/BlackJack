@@ -19,7 +19,6 @@ namespace BlackJack
         private List<Game> lstGame = new List<Game>();
         private PlayerPro playerPro;
         private int idGame = -1;
-        private int nbTime = 0;
 
         public FrmMain()
         {
@@ -30,8 +29,9 @@ namespace BlackJack
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
+            FrmGame frmGame = new FrmGame((int)nupNbDeck.Value, (int)nupNbPlayer.Value, (int)nupNbTurn.Value, (int)nupNbTable.Value,CASH);
+            frmGame.Show();
             nbTurn = 0;
-            nbTime = 0;
             lstGame.Clear();
             for (int i = 0; i < nupNbTable.Value; i++)
             {
@@ -50,7 +50,6 @@ namespace BlackJack
             {
                 testIdGame();
                 playEachGame();
-                if (idGame >= 0) nbTime++;
                 nbTurn++;
             }
             displayValue();
@@ -66,7 +65,6 @@ namespace BlackJack
             }
             testIdGame();
             playEachGame();
-            if (idGame >= 0) nbTime++;
             displayValue();
             nbTurn++;
         }

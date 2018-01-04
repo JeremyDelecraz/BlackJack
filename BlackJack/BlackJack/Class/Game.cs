@@ -10,7 +10,7 @@ namespace BlackJack.Class
     {
         public static Random RAND = new Random();
         private Deck deck;
-        private List<PlayerLambda> lstPlayer;
+        public List<PlayerLambda> LstPlayer { get; private set; }
         private PlayerBank bank;
         private PlayerPro playerPro;
         private int sabotValue = 0;
@@ -34,10 +34,10 @@ namespace BlackJack.Class
         private void initPLayer(int nbPlayer,int cash)
         {
             bank = new PlayerBank(this);
-            lstPlayer = new List<PlayerLambda>();
+            LstPlayer = new List<PlayerLambda>();
             for (int i = 0; i < nbPlayer; i++)
             {
-                lstPlayer.Add(new PlayerLambda(this,bank,cash));
+                LstPlayer.Add(new PlayerLambda(this,bank,cash));
             }
         }
 
@@ -59,9 +59,9 @@ namespace BlackJack.Class
         /// </summary>
         private void betTurnByTurn()
         {
-            for (int i = 0; i < lstPlayer.Count; i++)
+            for (int i = 0; i < LstPlayer.Count; i++)
             {
-                lstPlayer[i].bet();
+                LstPlayer[i].bet();
             }
             if (playerPro != null) playerPro.bet();
         }
@@ -71,21 +71,21 @@ namespace BlackJack.Class
         /// </summary>
         private void playTurnByTurn()
         {
-            for (int i = 0; i < lstPlayer.Count; i++)
+            for (int i = 0; i < LstPlayer.Count; i++)
             {
-                lstPlayer[i].play();
+                LstPlayer[i].play();
             }
             if (playerPro != null) playerPro.play();
             bank.play();
         }
 
         /// <summary>
-        /// Vérification si le nombre de carte dans le paquet sons sufisant
-        /// En moyenne (3.5 cartes par personne sont utilisée)
+        /// Vérification si le nombre de carte dans le paquet sont sufisant
+        /// Lorsqu'il reste 1 quart des cartes
         /// </summary>
         private void testEnoughCard()
         {
-            if(deck.getNbCard() < (nbPlayer + 2) * 4.5)
+            if(deck.getNbCard() <= nbDeck * Deck.NB_CARD_ONE_DECK / 4)
             {
                 deck.reset();
                 sabotValue = 0;
@@ -100,9 +100,9 @@ namespace BlackJack.Class
         {
             for (int j = 0; j < 2; j++)
             {
-                for (int i = 0; i < lstPlayer.Count; i++)
+                for (int i = 0; i < LstPlayer.Count; i++)
                 {
-                    lstPlayer[i].addCard(0);
+                    LstPlayer[i].addCard(0);
                 }
                 if (playerPro != null && playerPro.isPlaying) { playerPro.addCard(0); }
                 bank.addCard(0);
@@ -116,9 +116,9 @@ namespace BlackJack.Class
         {
             int bHandValue = bank.getHandValue(0);
             int bNbCard = bank.getNbCard(0);
-            for (int i = 0; i < lstPlayer.Count; i++)
+            for (int i = 0; i < LstPlayer.Count; i++)
             {
-                lstPlayer[i].verifWinLose(bHandValue, bNbCard);
+                LstPlayer[i].verifWinLose(bHandValue, bNbCard);
             }
             if (playerPro != null && playerPro.isPlaying) { playerPro.verifWinLose(bHandValue, bNbCard); }
         }
@@ -128,9 +128,9 @@ namespace BlackJack.Class
         /// </summary>
         private void replay()
         {
-            for (int i = 0; i < lstPlayer.Count; i++)
+            for (int i = 0; i < LstPlayer.Count; i++)
             {
-                lstPlayer[i].resetHand();
+                LstPlayer[i].resetHand();
             }
             bank.resetHand();
             if (playerPro != null) playerPro.resetHand();
@@ -145,8 +145,7 @@ namespace BlackJack.Class
         {
             Card c = deck.getCard();
             sabotValue += c.SabotValue;
-            int nbDeck = deck.getNbDeck();
-            RealSabotValue = sabotValue / ((nbDeck > 0) ? nbDeck : 1);
+            RealSabotValue = sabotValue / deck.getNbDeck();
             return c;
         }
 

@@ -95,10 +95,13 @@
             // 
             // pbxCard
             // 
+            this.pbxCard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxCard.InitialImage = null;
             this.pbxCard.Location = new System.Drawing.Point(0, 0);
             this.pbxCard.Name = "pbxCard";
-            this.pbxCard.Size = new System.Drawing.Size(50, 73);
+            this.pbxCard.Size = new System.Drawing.Size(25, 35);
             this.pbxCard.TabIndex = 0;
             this.pbxCard.TabStop = false;
             // 
@@ -108,7 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pbxCard);
             this.Name = "CardUC";
-            this.Size = new System.Drawing.Size(50, 73);
+            this.Size = new System.Drawing.Size(25, 35);
             ((System.ComponentModel.ISupportInitialize)(this.pbxCard)).EndInit();
             this.ResumeLayout(false);
 

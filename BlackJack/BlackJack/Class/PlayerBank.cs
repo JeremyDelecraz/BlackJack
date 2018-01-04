@@ -28,5 +28,10 @@ namespace BlackJack.Class
         {
             return LstHand[0].getFirstCard().CardValue;
         }
+
+        public Card getFirstCard()
+        {
+            return LstHand[0].getFirstCard();
+        }
     }
 }

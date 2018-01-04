@@ -1,6 +1,6 @@
 ﻿namespace BlackJack.UserControls
 {
-    partial class HandUC
+    partial class PlayerBankUC
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,26 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblHandValue = new System.Windows.Forms.Label();
+            this.lblNamePlayer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // lblHandValue
+            // lblNamePlayer
             // 
-            this.lblHandValue.AutoSize = true;
-            this.lblHandValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHandValue.Location = new System.Drawing.Point(14, -1);
-            this.lblHandValue.Name = "lblHandValue";
-            this.lblHandValue.Size = new System.Drawing.Size(15, 15);
-            this.lblHandValue.TabIndex = 0;
-            this.lblHandValue.Text = "0";
+            this.lblNamePlayer.AutoSize = true;
+            this.lblNamePlayer.Location = new System.Drawing.Point(0, 0);
+            this.lblNamePlayer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNamePlayer.Name = "lblNamePlayer";
+            this.lblNamePlayer.Size = new System.Drawing.Size(39, 15);
+            this.lblNamePlayer.TabIndex = 0;
+            this.lblNamePlayer.Text = "Bank";
             // 
-            // HandUC
+            // PlayerBankUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblHandValue);
-            this.Name = "HandUC";
-            this.Size = new System.Drawing.Size(97, 50);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.lblNamePlayer);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "PlayerBankUC";
+            this.Size = new System.Drawing.Size(81, 66);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -55,6 +59,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblHandValue;
+        private System.Windows.Forms.Label lblNamePlayer;
     }
 }

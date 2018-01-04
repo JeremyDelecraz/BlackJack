@@ -17,6 +17,8 @@ namespace BlackJack.Class
         protected List<int> lstBetValue = new List<int>();
         public Game GameTable { protected get; set; }
         public PlayerBank Bank { protected get; set; }
+        public bool TakingInsurance{ get; protected set; } = false;
+        public int BetValueInsurance { get; protected set; }
 
         public Player(Game g,PlayerBank b,int cash) {
             this.GameTable = g;
@@ -88,7 +90,15 @@ namespace BlackJack.Class
                 if (handValue > BLACKJACK) { loseCash(i); return; }
                 if (handValue == BLACKJACK && LstHand[i].getNbCard() == 2 && LstHand.Count == 1) { winBlackJack(i); return; }
                 if (bankHandValue > BLACKJACK && handValue <= BLACKJACK) { winCash(i); return; }
-                if (bankHandValue == BLACKJACK && nbCardBank == 2) { loseCash(i); return; }
+                if (bankHandValue == BLACKJACK && nbCardBank == 2) {
+                    if (TakingInsurance)
+                    {
+                        Cash += BetValueInsurance * 3;
+                        Bank.Cash -= BetValueInsurance * 2;
+                    }
+                    loseCash(i);
+                    return;
+                }
                 if (bankHandValue == handValue) { equalCash(i); return; }
                 if (bankHandValue <= BLACKJACK && handValue > bankHandValue) { winCash(i); return; }
                 if (handValue < bankHandValue) { loseCash(i); return; }
@@ -145,6 +155,7 @@ namespace BlackJack.Class
         {
             LstHand.Clear();
             lstBetValue.Clear();
+            BetValueInsurance = 0;
         }
 
         /// <summary>

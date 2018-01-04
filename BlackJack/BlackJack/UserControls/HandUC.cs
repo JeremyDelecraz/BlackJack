@@ -19,9 +19,9 @@ namespace BlackJack.UserControls
 
         public void setCard(List<int> lstIndexImage,int value)
         {
-            int x = 4;
-            int y = 40;
-            int dist = 40;
+            int x = 0;
+            int y = 12;
+            int dist = 6;
             for (int i = 0; i < lstIndexImage.Count; i++)
             {
                 displayOneCard(x + i * dist, y, lstIndexImage[i]);
