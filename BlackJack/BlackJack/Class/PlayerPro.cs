@@ -9,10 +9,10 @@ namespace BlackJack.Class
     class PlayerPro : Player
     {
         public static int SABOT_TO_STAY = 3;
-        public static int SABOT_TO_PLAY = 10;
-        private const int SABOT_TO_PLAY2 = 13;
-        private const int SABOT_TO_PLAY3 = 15;
-        private const int SABOT_TO_PLAY4 = 17;
+        public static int SABOT_TO_PLAY = 7;
+        private const int SABOT_TO_PLAY2 = 10;
+        private const int SABOT_TO_PLAY3 = 13;
+        private const int SABOT_TO_PLAY4 = 16;
         private const int MAX_BET_STAY = 2;
         private const int MAX_BET = 6;
         private const int MAX_BET2 = 10;
@@ -38,7 +38,7 @@ namespace BlackJack.Class
                     testEnoughCardInHand(i);
                     int handValue = LstHand[i].Value;
                     Card plaFirC = LstHand[i].getFirstCard();
-                    if (GameTable.RealSabotValue >= SABOT_TO_PLAY && (equalCard(plaFirC,"A") || equalCard(plaFirC, "6") || equalCard(plaFirC, "7") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20))
+                    if ((equalCard(plaFirC,"A") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20))
                     {
                         if (bFirCaValue < 7 && bFirCaValue > 3)
                         {
@@ -95,14 +95,14 @@ namespace BlackJack.Class
         /// </summary>
         public override void bet()
         {
-            if (GameTable.RealSabotValue >= SABOT_TO_PLAY)
+            if (GameTable.RealSabotValue >= SABOT_TO_STAY)
             {
                 isPlaying = true;
-                /*if (setBetValue(SABOT_TO_PLAY4, MAX_BET4)) return;
+                if (setBetValue(SABOT_TO_PLAY4, MAX_BET4)) return;
                 if (setBetValue(SABOT_TO_PLAY3, MAX_BET3)) return;
-                if (setBetValue(SABOT_TO_PLAY2, MAX_BET2)) return;*/
+                if (setBetValue(SABOT_TO_PLAY2, MAX_BET2)) return;
                 if (setBetValue(SABOT_TO_PLAY, MAX_BET4)) return;
-                //if (setBetValue(SABOT_TO_STAY, MAX_BET_STAY)) return;
+                if (setBetValue(SABOT_TO_STAY, MAX_BET_STAY)) return;
             }
             else
             {

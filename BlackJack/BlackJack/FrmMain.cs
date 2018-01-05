@@ -29,9 +29,7 @@ namespace BlackJack
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            FrmGame frmGame = new FrmGame((int)nupNbDeck.Value, (int)nupNbPlayer.Value, (int)nupNbTurn.Value, (int)nupNbTable.Value,CASH);
-            frmGame.Show();
-            nbTurn = 0;
+                        nbTurn = 0;
             lstGame.Clear();
             for (int i = 0; i < nupNbTable.Value; i++)
             {
@@ -39,7 +37,10 @@ namespace BlackJack
             }
             playerPro = new PlayerPro(CASH);
             if (cbxTimer.Checked)
-                tmrTurn.Enabled = true;
+            {
+                FrmGame frmGame = new FrmGame((int)nupNbDeck.Value, (int)nupNbPlayer.Value, (int)nupNbTurn.Value, (int)nupNbTable.Value,CASH);
+                frmGame.Show();
+            }
             else
                 playWithoutTimer();
         }
@@ -54,19 +55,6 @@ namespace BlackJack
             }
             displayValue();
             lblNbTurnValue.Text = nbTurn.ToString();
-        }
-
-        private void tmrTurn_Tick(object sender, EventArgs e)
-        {
-            lblNbTurnValue.Text = nbTurn.ToString();
-            if (nbTurn == (int)nupNbTurn.Value) {
-                tmrTurn.Enabled = false;
-                nbTurn = 0;
-            }
-            testIdGame();
-            playEachGame();
-            displayValue();
-            nbTurn++;
         }
 
         private int getGameIndMaxSabotValue()
@@ -121,47 +109,11 @@ namespace BlackJack
             lblNbLoseValue.Text = playerPro.NbLose.ToString();
             lblSabotValue.Text = (idGame >= 0) ? lstGame[idGame].RealSabotValue.ToString() : "0";
             lblGameIndexValue.Text = idGame.ToString();
-            displayCard();
         }
 
         private void btnStartStop_Click(object sender, EventArgs e)
         {
             tmrTurn.Enabled = !tmrTurn.Enabled;
-        }
-
-        private void displayCard()
-        {
-            removeHand();
-            if (idGame >= 0)
-            {
-                int x = 20;
-                int dist = 150;
-                int yBank = 20;
-                int yPro = 130;
-                Hand handBank = lstGame[idGame].getBankHand();
-                List<Hand> lstHandPlPro = lstGame[idGame].getPlayerProHand();
-
-                Text = handBank.Value.ToString() + " ||| ";
-                displayOneHand(x, yBank, handBank);
-                for (int i = 0; i < lstHandPlPro.Count; i++)
-                {
-                    displayOneHand(x + i * dist, yPro, lstHandPlPro[i]);
-                    Text += lstHandPlPro[i].Value.ToString() + " | ";
-                }
-            }
-        }
-
-        private void removeHand()
-        {
-            gbxHand.Controls.Clear();
-        }
-
-        private void displayOneHand(int x, int y,Hand h)
-        {
-            HandUC handUC = new HandUC();
-            handUC.setCard(h.getLstIndexImage(),h.Value);
-            handUC.Location = new Point(x,y);
-            gbxHand.Controls.Add(handUC);
         }
     }
 }
