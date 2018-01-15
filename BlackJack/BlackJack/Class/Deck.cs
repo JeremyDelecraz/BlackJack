@@ -88,7 +88,7 @@ namespace BlackJack.Class
         {
             List<Card> randomList = new List<Card>();
 
-            Random r = Game.RAND;
+            Random r = Table.RAND;
             int randomIndex = 0;
             while (lstCard.Count > 0)
             {

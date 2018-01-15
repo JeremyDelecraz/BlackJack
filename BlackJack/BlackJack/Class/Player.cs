@@ -15,20 +15,24 @@ namespace BlackJack.Class
         public int Cash { get; protected set; }
         public List<Hand> LstHand { get; protected set; } = new List<Hand>();
         protected List<int> lstBetValue = new List<int>();
-        public Game GameTable { protected get; set; }
+        public Table GameTable { protected get; set; }
         public PlayerBank Bank { protected get; set; }
         public bool TakingInsurance{ get; protected set; } = false;
         public int BetValueInsurance { get; protected set; }
 
-        public Player(Game g,PlayerBank b,int cash) {
+        public Player(Table g,PlayerBank b,int cash) {
             this.GameTable = g;
             this.Bank = b;
             Cash = cash;
         }
 
-        public Player(Game g)
+        public Player(Table g)
         {
             this.GameTable = g;
+        }
+
+        public Player()
+        {
         }
 
         public virtual void play()

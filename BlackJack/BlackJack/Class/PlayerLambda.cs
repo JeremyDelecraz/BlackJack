@@ -8,9 +8,9 @@ namespace BlackJack.Class
 {
     class PlayerLambda : Player
     {
-        private const int BET = 50;
+        private const int BET = 1000;
 
-        public PlayerLambda(Game g, PlayerBank b, int cash) : base(g,b,cash)
+        public PlayerLambda(Table g, PlayerBank b, int cash) : base(g,b,cash)
         {
         }
 
@@ -23,7 +23,7 @@ namespace BlackJack.Class
             {
                 testEnoughCardInHand(i);
                 int handValue = LstHand[i].Value;
-                if (handValue >= 20)
+                if (handValue >= 16)
                 {
                     testSplit(i);
                     handValue = LstHand[i].Value;

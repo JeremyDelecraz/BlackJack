@@ -32,10 +32,11 @@
             // 
             // ListHandUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ListHandUC";
-            this.Size = new System.Drawing.Size(355, 50);
+            this.Size = new System.Drawing.Size(192, 49);
             this.ResumeLayout(false);
 
         }

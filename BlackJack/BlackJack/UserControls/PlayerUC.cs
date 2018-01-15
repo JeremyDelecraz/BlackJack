@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace BlackJack.UserControls
 {
-    public partial class playerUC : UserControl
+    public partial class PlayerUC : UserControl
     {
-        public playerUC()
+        public PlayerUC()
         {
             InitializeComponent();
         }
 
-        public void setPlayer(List<List<int>> lstHandIndexImage, List<int> lstValue, int cash,int idProfImage, string namePlayer)
+        public void setPlayer(List<int> lstValue, List<int> lstNbCard, int cash,int idProfImage, string namePlayer)
         {
             lblCashValue.Text = cash.ToString();
             lblNamePlayer.Text = namePlayer;
             pbxProfil.BackgroundImage = lstImageProfil.Images[idProfImage];
-            lstHandUC.setHands(lstHandIndexImage, lstValue);
+            lstHandUC.setHands(lstValue, lstNbCard);
         }
     }
 }

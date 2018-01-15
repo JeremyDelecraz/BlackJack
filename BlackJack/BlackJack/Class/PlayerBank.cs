@@ -8,7 +8,7 @@ namespace BlackJack.Class
 {
     class PlayerBank : Player
     {
-        public PlayerBank(Game g) : base(g)
+        public PlayerBank(Table g) : base(g)
         {
 
         }

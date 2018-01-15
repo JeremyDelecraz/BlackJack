@@ -85,14 +85,13 @@ namespace BlackJack.Class
             return LstCard.Count;
         }
 
-        public List<int> getLstIndexImage()
+        public bool testContain(Card c)
         {
-            List<int> lstIndexImage = new List<int>();
             for (int i = 0; i < LstCard.Count; i++)
             {
-                lstIndexImage.Add(LstCard[i].IndexImage);
+                if (LstCard[i].Equals(c)) return true;
             }
-            return lstIndexImage;
+            return false;
         }
     }
 }

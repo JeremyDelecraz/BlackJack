@@ -34,16 +34,16 @@
             // lblNamePlayer
             // 
             this.lblNamePlayer.AutoSize = true;
-            this.lblNamePlayer.Location = new System.Drawing.Point(0, 0);
+            this.lblNamePlayer.Location = new System.Drawing.Point(-2, 0);
             this.lblNamePlayer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNamePlayer.Name = "lblNamePlayer";
-            this.lblNamePlayer.Size = new System.Drawing.Size(39, 15);
+            this.lblNamePlayer.Size = new System.Drawing.Size(46, 18);
             this.lblNamePlayer.TabIndex = 0;
             this.lblNamePlayer.Text = "Bank";
             // 
             // PlayerBankUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -51,7 +51,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "PlayerBankUC";
-            this.Size = new System.Drawing.Size(81, 66);
+            this.Size = new System.Drawing.Size(43, 66);
             this.ResumeLayout(false);
             this.PerformLayout();
 

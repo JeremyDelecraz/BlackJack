@@ -100,18 +100,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxCard.InitialImage = null;
             this.pbxCard.Location = new System.Drawing.Point(0, 0);
+            this.pbxCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxCard.Name = "pbxCard";
-            this.pbxCard.Size = new System.Drawing.Size(25, 35);
+            this.pbxCard.Size = new System.Drawing.Size(33, 43);
             this.pbxCard.TabIndex = 0;
             this.pbxCard.TabStop = false;
             // 
             // CardUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pbxCard);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CardUC";
-            this.Size = new System.Drawing.Size(25, 35);
+            this.Size = new System.Drawing.Size(33, 43);
             ((System.ComponentModel.ISupportInitialize)(this.pbxCard)).EndInit();
             this.ResumeLayout(false);
 

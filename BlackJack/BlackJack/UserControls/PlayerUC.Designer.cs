@@ -1,6 +1,6 @@
 ﻿namespace BlackJack.UserControls
 {
-    partial class playerUC
+    partial class PlayerUC
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(playerUC));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerUC));
             this.lblNamePlayer = new System.Windows.Forms.Label();
             this.pbxProfil = new System.Windows.Forms.PictureBox();
             this.lblCashValue = new System.Windows.Forms.Label();
@@ -74,13 +74,14 @@
             // 
             // lstHandUC
             // 
-            this.lstHandUC.Location = new System.Drawing.Point(38, 17);
-            this.lstHandUC.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.lstHandUC.BackColor = System.Drawing.SystemColors.Control;
+            this.lstHandUC.Location = new System.Drawing.Point(43, 20);
+            this.lstHandUC.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.lstHandUC.Name = "lstHandUC";
-            this.lstHandUC.Size = new System.Drawing.Size(355, 50);
+            this.lstHandUC.Size = new System.Drawing.Size(192, 49);
             this.lstHandUC.TabIndex = 4;
             // 
-            // playerUC
+            // PlayerUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,8 +92,8 @@
             this.Controls.Add(this.lblNamePlayer);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "playerUC";
-            this.Size = new System.Drawing.Size(391, 67);
+            this.Name = "PlayerUC";
+            this.Size = new System.Drawing.Size(235, 67);
             ((System.ComponentModel.ISupportInitialize)(this.pbxProfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

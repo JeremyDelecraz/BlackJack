@@ -8,9 +8,9 @@ namespace BlackJack.Class
 {
     class PlayerPro : Player
     {
-        public static int SABOT_TO_STAY = 3;
-        public static int SABOT_TO_PLAY = 7;
-        private const int SABOT_TO_PLAY2 = 10;
+        public static int SABOT_TO_STAY = 2;
+        public static int SABOT_TO_PLAY = 5;
+        private const int SABOT_TO_PLAY2 = 7;
         private const int SABOT_TO_PLAY3 = 13;
         private const int SABOT_TO_PLAY4 = 16;
         private const int MAX_BET_STAY = 2;
@@ -20,9 +20,13 @@ namespace BlackJack.Class
         private const int MAX_BET4 = 25;
         public bool isPlaying = true;
 
-        public PlayerPro(Game g,PlayerBank b,int cash) : base(g,b,cash) { }
+        public PlayerPro(Table g,PlayerBank b,int cash) : base(g,b,cash) { }
         
         public PlayerPro(int cash) : base(null, null, cash) { }
+
+        public PlayerPro() : base()
+        {
+        }
 
         /// <summary>
         /// La simulation de jeu d'un joueur pro
@@ -35,31 +39,85 @@ namespace BlackJack.Class
                 insurance();
                 for (int i = 0; i < LstHand.Count; i++)
                 {
-                    testEnoughCardInHand(i);
-                    int handValue = LstHand[i].Value;
-                    Card plaFirC = LstHand[i].getFirstCard();
-                    if ((equalCard(plaFirC,"A") || equalCard(plaFirC, "8") || equalCard(plaFirC, "9") || handValue == 20))
-                    {
-                        if (bFirCaValue < 7 && bFirCaValue > 3)
-                        {
-                            testSplit(i);
-                            handValue = LstHand[i].Value;
-                        }
-                    }
-                    if (GameTable.RealSabotValue >= SABOT_TO_PLAY && handValue <= 11 && handValue > 6)
-                    {
-                        if (bFirCaValue < 7 && bFirCaValue > 3)
-                        {
-                            doubleBet(i);
-                            return;
-                        }
-                    }
-                    while (LstHand[i].Value <= 11)
+                    playEachHand(i, bFirCaValue);
+                }
+            }
+        }
+
+        private void playEachHand(int i,int bFirCaValue)
+        {
+            testEnoughCardInHand(i);
+            int handValue = split(LstHand[i].getFirstCard(), bFirCaValue, i);
+            if (handValue >= 17 && handValue <= 21)
+            {
+                return;
+            }
+            if (handValue >= 9 && handValue <= 11 && bFirCaValue >= 2 && bFirCaValue <= 6)
+            {
+                doubleBet(i);
+                return;
+            }
+            if (handValue >= 12 && handValue <= 16)
+            {
+                if (bFirCaValue > 6)
+                    addCard(i);
+                else
+                {
+                    if (LstHand[i].testContain(new Card("A")))
                     {
                         addCard(i);
                     }
                 }
             }
+            while (LstHand[i].Value <= 11)
+            {
+                addCard(i);
+            }
+        }
+
+        /// <summary>
+        /// Split sous certaines conditions
+        /// </summary>
+        /// <param name="plaFirC"></param>
+        /// <param name="bFirCaValue"></param>
+        /// <param name="idHand"></param>
+        /// <returns></returns>
+        private int split(Card plaFirC,int bFirCaValue,int idHand)
+        {
+            if (equalCard(plaFirC, "A") && bFirCaValue < 7)
+            {
+                testSplit(idHand);
+                return LstHand[idHand].Value;
+            }
+            if (equalCard(plaFirC, "8") && bFirCaValue < 8 && bFirCaValue > 2)
+            {
+                testSplit(idHand);
+                return LstHand[idHand].Value;
+            }
+            if (equalCard(plaFirC, "9") && bFirCaValue < 6 && bFirCaValue > 2)
+            {
+                testSplit(idHand);
+                return LstHand[idHand].Value;
+            }
+            if(bFirCaValue >= 2 && bFirCaValue <= 6)
+            {
+                if (equalCard(plaFirC, "2"))
+                {
+                    testSplit(idHand);
+                    return LstHand[idHand].Value;
+                }
+                if (equalCard(plaFirC, "3"))
+                {
+                    testSplit(idHand);
+                    return LstHand[idHand].Value;
+                }
+                if (equalCard(plaFirC, "4"))
+                {
+                    testSplit(idHand);
+                    return LstHand[idHand].Value;
+                }
+            }
+            return LstHand[idHand].Value;
         }
 
         /// <summary>

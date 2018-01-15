@@ -35,19 +35,22 @@
             // 
             this.lblHandValue.AutoSize = true;
             this.lblHandValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHandValue.Location = new System.Drawing.Point(14, -1);
+            this.lblHandValue.Location = new System.Drawing.Point(3, 15);
+            this.lblHandValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHandValue.Name = "lblHandValue";
-            this.lblHandValue.Size = new System.Drawing.Size(15, 15);
+            this.lblHandValue.Size = new System.Drawing.Size(26, 18);
             this.lblHandValue.TabIndex = 0;
-            this.lblHandValue.Text = "0";
+            this.lblHandValue.Text = "25";
             // 
             // HandUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Controls.Add(this.lblHandValue);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HandUC";
-            this.Size = new System.Drawing.Size(97, 50);
+            this.Size = new System.Drawing.Size(32, 49);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,12 +18,12 @@ namespace BlackJack.UserControls
             InitializeComponent();
         }
 
-        public void setHand(List<int> lstIndexImage, int value)
+        public void setHand(int value,int nbCard)
         {
             removeHand();
             handUC = new HandUC();
-            handUC.Location = new Point(0, 19);
-            handUC.setCard(lstIndexImage,value);
+            handUC.Location = new Point(5, 18);
+            handUC.setCard(value,nbCard);
             Controls.Add(handUC);
         }
 
