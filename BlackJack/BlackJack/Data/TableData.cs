@@ -15,16 +15,7 @@ namespace BlackJack.Class
         public double SabotValue { get; set; }
         public int NbCard { get; set; }
 
-        public TableData(Hand handBank, double sabotValue,int nbCard, List<PlayerLambda> lstPlayer, PlayerPro playerPro)
-        {
-            HandBank = handBank;
-            SabotValue = sabotValue;
-            NbCard = nbCard;
-            PlayerPro = new PlayerData(playerPro.Cash, playerPro.NbWin, playerPro.NbEqual,playerPro.NbLose,playerPro.LstHand);
-            addPlayers(lstPlayer);
-        }
-
-        public TableData(Hand handBank, double sabotValue, int nbCard, List<PlayerLambda> lstPlayer)
+        public TableData(Hand handBank, double sabotValue,int nbCard, List<PlayerLambda> lstPlayer)
         {
             HandBank = handBank;
             SabotValue = sabotValue;
@@ -39,6 +30,11 @@ namespace BlackJack.Class
             {
                 LstPlayer.Add(new PlayerData(p.Cash, p.NbWin, p.NbEqual, p.NbLose, p.LstHand));
             }
+        }
+
+        public void setPlayerPro(PlayerPro playerPro)
+        {
+            PlayerPro = new PlayerData(playerPro.Cash, playerPro.NbWin, playerPro.NbEqual, playerPro.NbLose, playerPro.LstHand);
         }
     }
 }

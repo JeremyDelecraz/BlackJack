@@ -85,7 +85,7 @@ namespace BlackJack.Class
             return LstCard.Count;
         }
 
-        public bool testContain(Card c)
+        public bool testContains(Card c)
         {
             for (int i = 0; i < LstCard.Count; i++)
             {

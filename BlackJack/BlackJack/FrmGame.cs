@@ -34,19 +34,26 @@ namespace BlackJack
             }
             playerPro = new PlayerPro(cash);
             play();
+            frmData = frm;
+            StartPosition = FormStartPosition.Manual;
+
+            Location = new Point(0, 0);
+            frmData.Show();
             initDisplayTable(nbTable, nbPlayer);
             tmrTurn.Enabled = true;
-            frmData = frm;
-            frmData.Show();
+            frmData.StartPosition = FormStartPosition.Manual;
+            frmData.Location = new Point( 0, Size.Height -50);
         }
 
         private void initDisplayTable(int nbTable,int nbPlayer)
         {
-            Size = Screen.PrimaryScreen.Bounds.Size;
             int x = 0;
             int y = 80;
             int distX = 500;
             int distY = 370;
+            int width = Screen.PrimaryScreen.Bounds.Size.Width / distY ;
+            Size = new Size((width - 1) * distY + 50, Screen.PrimaryScreen.Bounds.Size.Height - frmData.Size.Height);
+
             for (int i = 0; i < nbTable; i++)
             {
                 TableUC tableUC = new TableUC();
@@ -79,23 +86,21 @@ namespace BlackJack
         {
             TableData tableData;
             TurnData turnData = new TurnData();
-            int nbTable = 0;
             foreach (Table table in lstTable)
             {
-                if(table.PlayerPro == null) {
-                    tableData = new TableData(table.getBankHand(), table.RealSabotValue,table.getNbCardInDeck(), table.LstPlayer);
-                    nbTable++;
-                }
-                else
-                {
-                    tableData = new TableData(table.getBankHand(), table.RealSabotValue, table.getNbCardInDeck(), table.LstPlayer, table.PlayerPro);
-                }
+                tableData = new TableData(table.getBankHand(), table.RealSabotValue, table.getNbCardInDeck(), table.LstPlayer);
+                if (table.PlayerPro != null) { tableData.setPlayerPro(table.PlayerPro); }
                 turnData.addTableData(tableData);
             }
-            if(lstTable.Count == nbTable) { turnData.setPlayerPro(playerPro); }
+            turnData.setPlayerPro(playerPro);
             gameData.addTurnData(turnData);
         }
 
+        /// <summary>
+        /// Le timer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tmrTurn_Tick(object sender, EventArgs e)
         {
             if (nbTurn >= nbTurnMax) { tmrTurn.Enabled = false; }
@@ -166,41 +171,72 @@ namespace BlackJack
         private void displayValue()
         {
             int id = 0;
+            bool playerProPlaying = false;
             foreach (TableUC tableUC in Controls.OfType<TableUC>())
             {
+                double previousSabotValue = 0;
+                if (nbTurn > 0) { previousSabotValue = gameData.LstTurnData[nbTurn].LstTable[id].SabotValue; }
                 TableData tableData = gameData.LstTurnData[nbTurn].LstTable[id++];
                 Hand handBank = tableData.HandBank;
                 tableUC.setBank(handBank.Value, handBank.getNbCard());
                 setPlayers(tableData, tableUC);
-                setPlayerPro(tableData, tableUC);
+                playerProPlaying = (setPlayerPro(tableData, tableUC, previousSabotValue) || playerProPlaying);
                 tableUC.setSabotValue(tableData.SabotValue);
                 tableUC.setNbCard(tableData.NbCard);
             }
-            if (gameData.LstTurnData[nbTurn].PlayerPro != null)
+            displayPlayerProOutTable(playerProPlaying);
+
+            lblNbTurnValue.Text = (nbTurn+ 1).ToString();
+            setEnabledButton();
+
+
+        }
+
+        /// <summary>
+        /// Affichage du joueur pro au coin s'il n'est pas sur une table
+        /// </summary>
+        /// <param name="isPlaying"></param>
+        private void displayPlayerProOutTable(bool isPlaying)
+        {
+            if (!isPlaying)
             {
                 PlayerData playerData = gameData.LstTurnData[nbTurn].PlayerPro;
                 PlayerData playerPro = gameData.LstTurnData[nbTurn].PlayerPro;
                 playerProUC.setData(playerData.Cash, playerData.NbWin, playerData.NbEqual, playerData.NbLose);
-                frmData.setValue(playerPro.NbWin, playerPro.NbEqual, playerPro.NbLose,nbTurn,playerPro.Cash);
+                frmData.setValueChart(playerData.NbWin, playerData.NbEqual, playerData.NbLose, nbTurn, playerData.Cash);
                 playerProUC.Visible = true;
             }
-            else {
+            else
+            {
                 playerProUC.Visible = false;
             }
-
-            lblNbTurnValue.Text = (nbTurn+ 1).ToString();
-            btnNext.Enabled = (nbTurn < nbTurnMax -1) && !tmrTurn.Enabled;
-            btnPrevious.Enabled = (nbTurn > 0) && !tmrTurn.Enabled;
-            btnFirst.Enabled = (nbTurn > 0) && !tmrTurn.Enabled;
-            btnLast.Enabled = (nbTurn < nbTurnMax-1) && !tmrTurn.Enabled;
-            if (nbTurn == nbTurnMax - 1)
-            {
-                btnPausePlay.Image = BlackJack.Properties.Resources.Restart;
-                btnPausePlay.Tag = VALUE_TAG_RESTART;
-            }
-               
         }
 
+        /// <summary>
+        /// Gestion des boutons
+        /// </summary>
+        private void setEnabledButton()
+        {
+            btnNext.Enabled = (nbTurn < nbTurnMax - 1) && !tmrTurn.Enabled;
+            btnPrevious.Enabled = (nbTurn > 0) && !tmrTurn.Enabled;
+            btnFirst.Enabled = (nbTurn > 0) && !tmrTurn.Enabled;
+            btnLast.Enabled = (nbTurn < nbTurnMax - 1) && !tmrTurn.Enabled;
+            if (nbTurn == nbTurnMax - 1)
+            {
+                btnPausePlay.Image = Properties.Resources.Restart;
+                btnPausePlay.Tag = VALUE_TAG_RESTART;
+            }
+            else
+            {
+                btnPausePlay.Image = (tmrTurn.Enabled) ? Properties.Resources.Pause : Properties.Resources.Play;
+            }
+        }
+
+        /// <summary>
+        /// Ajout d'un joueur Lamda au niveau graphique
+        /// </summary>
+        /// <param name="tableData"></param>
+        /// <param name="tableUC"></param>
         private void setPlayers(TableData tableData, TableUC tableUC)
         {
             List<PlayerData> lstP = tableData.LstPlayer;
@@ -224,7 +260,13 @@ namespace BlackJack
             tableUC.setPlayers(lstPlayerValue, lstPlayerNbCard, lstPlayerCash);
         }
 
-        private void setPlayerPro(TableData tableData, TableUC tableUC)
+        /// <summary>
+        /// Ajoute le joueurs pro dans une table (Graphiquement) que s'il est
+        /// </summary>
+        /// <param name="tableData"></param>
+        /// <param name="tableUC"></param>
+        /// <returns>Si le joueur pro est existant</returns>
+        private bool setPlayerPro(TableData tableData, TableUC tableUC,double previousSabot)
         {
             if (tableData.PlayerPro != null)
             {
@@ -238,23 +280,28 @@ namespace BlackJack
                     lstNbCard.Add(lstHandPlPro[i].Nbcard);
                 }
                 tableUC.setPlayerPro(lstValue, lstNbCard, tableData.PlayerPro.Cash);
-                frmData.setValue(tableData.PlayerPro.NbWin, tableData.PlayerPro.NbEqual, tableData.PlayerPro.NbLose,nbTurn, tableData.PlayerPro.Cash);
+                frmData.setValueChart(tableData.PlayerPro.NbWin, tableData.PlayerPro.NbEqual, tableData.PlayerPro.NbLose,nbTurn, tableData.PlayerPro.Cash);
+                return true;
             }
             else
             {
                 tableUC.removePlayerPro();
+                return false;
             }
         }
 
+#region GestionBoutons
         private void btnFirst_Click(object sender, EventArgs e)
         {
             nbTurn = 0;
+            frmData.reset();
             displayValue();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             nbTurn--;
+            frmData.previous();
             displayValue();
         }
 
@@ -266,6 +313,11 @@ namespace BlackJack
 
         private void btnLast_Click(object sender, EventArgs e)
         {
+            for (int i = nbTurn; i < nbTurnMax - 2; i++)
+            {
+                PlayerData playerPro = gameData.LstTurnData[i].PlayerPro;
+                frmData.setValueChart(playerPro.NbWin, playerPro.NbEqual, playerPro.NbLose, i, playerPro.Cash);
+            }
             nbTurn = nbTurnMax -1;
             displayValue();
         }
@@ -275,6 +327,7 @@ namespace BlackJack
             if (btnPausePlay.Tag !=null && btnPausePlay.Tag.Equals(VALUE_TAG_RESTART)) {
                 btnPausePlay.Image = Properties.Resources.Pause;
                 nbTurn = 0;
+                frmData.reset();
                 displayValue();
                 tmrTurn.Enabled = true;
                 btnPausePlay.Tag = null;
@@ -282,12 +335,20 @@ namespace BlackJack
             else
             {
                 tmrTurn.Enabled = !tmrTurn.Enabled;
-                btnPausePlay.Image = (tmrTurn.Enabled) ? BlackJack.Properties.Resources.Pause : BlackJack.Properties.Resources.Play;
+                btnPausePlay.Image = (tmrTurn.Enabled) ? Properties.Resources.Pause : Properties.Resources.Play;
             }
-            btnLast.Enabled = !tmrTurn.Enabled;
-            btnFirst.Enabled = !tmrTurn.Enabled;
-            btnPrevious.Enabled = !tmrTurn.Enabled;
-            btnNext.Enabled = !tmrTurn.Enabled;
+            setEnabledButton();
+            //btnLast.Enabled = !tmrTurn.Enabled;
+            //btnFirst.Enabled = !tmrTurn.Enabled;
+            //btnPrevious.Enabled = !tmrTurn.Enabled;
+            //btnNext.Enabled = !tmrTurn.Enabled;
+        }
+        #endregion
+
+        private void FrmGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmData.FrmGameClose = true;
+            frmData.Close();
         }
     }
 }

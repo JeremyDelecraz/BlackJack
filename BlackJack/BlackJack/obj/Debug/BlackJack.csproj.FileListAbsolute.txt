@@ -132,3 +132,14 @@ G:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.dll
 G:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.pdb
 G:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.xml
 G:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.FrmData.resources
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.dll
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.dll
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.dll
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.pdb
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.xml
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.pdb
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.xml
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.pdb
+H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.xml
+H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.FrmData.resources
+H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.PlayerProUC.resources

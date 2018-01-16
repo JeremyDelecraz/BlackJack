@@ -14,6 +14,7 @@ namespace BlackJack
 {
     public partial class FrmData : Form
     {
+        public bool FrmGameClose { get; set; } = false;
         public FrmData()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace BlackJack
 
         private void initCartesian()
         {
-            cartesianChart1.Series = new SeriesCollection
+            caChart.Series = new SeriesCollection
             {
                 new LineSeries
                 {
@@ -57,25 +58,51 @@ namespace BlackJack
                 }
             };
 
-            cartesianChart1.AxisX.Add(new Axis
+            caChart.AxisX.Add(new Axis
             {
                 Title = "Tour",
                 Labels = new List<String>()
             });
 
-            cartesianChart1.AxisY.Add(new Axis
+            caChart.AxisY.Add(new Axis
             {
                 Title = "Argent",
             });
         }
 
-        public void setValue(int nbWin,int nbEqual,int nbLose,int nbTurn,int cash)
+        public void setValueChart(int nbWin,int nbEqual,int nbLose,int nbTurn,int cash)
         {
             pChart.Series[0].Values = new ChartValues<double> { nbWin };
             pChart.Series[1].Values = new ChartValues<double> { nbEqual };
             pChart.Series[2].Values = new ChartValues<double> { nbLose };
-            cartesianChart1.AxisX[0].Labels.Add(nbTurn.ToString());
-            cartesianChart1.Series[0].Values.Add((Double)cash);
+            caChart.AxisX[0].Labels.Add(nbTurn.ToString());
+            caChart.Series[0].Values.Add((Double)cash);
+        }
+
+        public void reset()
+        {
+            caChart.AxisX[0].Labels.Clear();
+            caChart.Series[0].Values.Clear();
+            pChart.Series[0].Values = new ChartValues<double> { 0 };
+            pChart.Series[1].Values = new ChartValues<double> { 0 };
+            pChart.Series[2].Values = new ChartValues<double> { 0 };
+        }
+
+        public void previous()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                if (caChart.AxisX[0].Labels.Count > 0)
+                {
+                    caChart.AxisX[0].Labels.RemoveAt(caChart.AxisX[0].Labels.Count - 1);
+                    caChart.Series[0].Values.RemoveAt(caChart.AxisX[0].Labels.Count - 1);
+                }
+            }
+        }
+
+        private void FrmData_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = !FrmGameClose;
         }
     }
 }

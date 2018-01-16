@@ -99,8 +99,13 @@ namespace BlackJack.Class
                     {
                         Cash += BetValueInsurance * 3;
                         Bank.Cash -= BetValueInsurance * 2;
+                        Bank.Cash += lstBetValue[i];
+                        NbEqual++;
                     }
-                    loseCash(i);
+                    else
+                    {
+                        loseCash(i);
+                    }
                     return;
                 }
                 if (bankHandValue == handValue) { equalCash(i); return; }

@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.tmrTurn = new System.Windows.Forms.Timer(this.components);
             this.gbxPlay = new System.Windows.Forms.GroupBox();
-            this.lblNbTurn = new System.Windows.Forms.Label();
-            this.lblNbTurnValue = new System.Windows.Forms.Label();
             this.btnLast = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPausePlay = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnFirst = new System.Windows.Forms.Button();
+            this.lblNbTurn = new System.Windows.Forms.Label();
+            this.lblNbTurnValue = new System.Windows.Forms.Label();
             this.playerProUC = new BlackJack.UserControls.PlayerProUC();
             this.gbxPlay.SuspendLayout();
             this.SuspendLayout();
@@ -61,24 +61,6 @@
             this.gbxPlay.Size = new System.Drawing.Size(138, 33);
             this.gbxPlay.TabIndex = 0;
             this.gbxPlay.TabStop = false;
-            // 
-            // lblNbTurn
-            // 
-            this.lblNbTurn.AutoSize = true;
-            this.lblNbTurn.Location = new System.Drawing.Point(357, 45);
-            this.lblNbTurn.Name = "lblNbTurn";
-            this.lblNbTurn.Size = new System.Drawing.Size(44, 13);
-            this.lblNbTurn.TabIndex = 5;
-            this.lblNbTurn.Text = "Tour N°";
-            // 
-            // lblNbTurnValue
-            // 
-            this.lblNbTurnValue.AutoSize = true;
-            this.lblNbTurnValue.Location = new System.Drawing.Point(407, 45);
-            this.lblNbTurnValue.Name = "lblNbTurnValue";
-            this.lblNbTurnValue.Size = new System.Drawing.Size(13, 13);
-            this.lblNbTurnValue.TabIndex = 6;
-            this.lblNbTurnValue.Text = "0";
             // 
             // btnLast
             // 
@@ -135,6 +117,24 @@
             this.btnFirst.UseVisualStyleBackColor = true;
             this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
+            // lblNbTurn
+            // 
+            this.lblNbTurn.AutoSize = true;
+            this.lblNbTurn.Location = new System.Drawing.Point(357, 45);
+            this.lblNbTurn.Name = "lblNbTurn";
+            this.lblNbTurn.Size = new System.Drawing.Size(44, 13);
+            this.lblNbTurn.TabIndex = 5;
+            this.lblNbTurn.Text = "Tour N°";
+            // 
+            // lblNbTurnValue
+            // 
+            this.lblNbTurnValue.AutoSize = true;
+            this.lblNbTurnValue.Location = new System.Drawing.Point(407, 45);
+            this.lblNbTurnValue.Name = "lblNbTurnValue";
+            this.lblNbTurnValue.Size = new System.Drawing.Size(13, 13);
+            this.lblNbTurnValue.TabIndex = 6;
+            this.lblNbTurnValue.Text = "0";
+            // 
             // playerProUC
             // 
             this.playerProUC.Location = new System.Drawing.Point(12, 9);
@@ -155,6 +155,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmGame";
             this.Text = "Jeux";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmGame_FormClosing);
             this.gbxPlay.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

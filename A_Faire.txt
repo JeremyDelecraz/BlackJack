@@ -1,0 +1,10 @@
+Attention Graphique Argent faux si on change (Avant Après) 
+	Enlever dernier
+	Enlever tout
+	Ajouter tout
+
+Voir un tableaux de toutes les mains du joueurs avec les sabot du jeu et la main du banquier
+
+Vérifier assurance
+
+Essayer d'évaluer ses chances de gagner

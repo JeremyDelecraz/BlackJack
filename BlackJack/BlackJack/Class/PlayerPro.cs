@@ -24,9 +24,6 @@ namespace BlackJack.Class
         
         public PlayerPro(int cash) : base(null, null, cash) { }
 
-        public PlayerPro() : base()
-        {
-        }
 
         /// <summary>
         /// La simulation de jeu d'un joueur pro
@@ -37,13 +34,21 @@ namespace BlackJack.Class
             {
                 int bFirCaValue = Bank.getFirstCardValue();
                 insurance();
-                for (int i = 0; i < LstHand.Count; i++)
+                if (BetValueInsurance == 0)
                 {
-                    playEachHand(i, bFirCaValue);
+                    for (int i = 0; i < LstHand.Count; i++)
+                    {
+                        playEachHand(i, bFirCaValue);
+                    }
                 }
             }
         }
 
+        /// <summary>
+        /// Ce que fait le joueur pro pour chaque main
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="bFirCaValue"></param>
         private void playEachHand(int i,int bFirCaValue)
         {
             testEnoughCardInHand(i);
@@ -63,7 +68,7 @@ namespace BlackJack.Class
                     addCard(i);
                 else
                 {
-                    if (LstHand[i].testContain(new Card("A")))
+                    if (LstHand[i].testContains(new Card("A")))
                     {
                         addCard(i);
                     }
@@ -129,12 +134,15 @@ namespace BlackJack.Class
             {
                 Card bFirCard = Bank.getFirstCard();
                 TakingInsurance = equalCard(bFirCard, "A");
-                if (TakingInsurance)
+                if (TakingInsurance && LstHand[0].Value < 21)
                 {
                     BetValueInsurance = lstBetValue[0] / 2;
                     Cash -= BetValueInsurance;
+                    return;
                 }
             }
+            BetValueInsurance = 0;
+            return;
         }
 
         /// <summary>
@@ -159,7 +167,7 @@ namespace BlackJack.Class
                 if (setBetValue(SABOT_TO_PLAY4, MAX_BET4)) return;
                 if (setBetValue(SABOT_TO_PLAY3, MAX_BET3)) return;
                 if (setBetValue(SABOT_TO_PLAY2, MAX_BET2)) return;
-                if (setBetValue(SABOT_TO_PLAY, MAX_BET4)) return;
+                if (setBetValue(SABOT_TO_PLAY, MAX_BET)) return;
                 if (setBetValue(SABOT_TO_STAY, MAX_BET_STAY)) return;
             }
             else
