@@ -88,7 +88,7 @@ namespace BlackJack
             TurnData turnData = new TurnData();
             foreach (Table table in lstTable)
             {
-                tableData = new TableData(table.getBankHand(), table.RealSabotValue, table.getNbCardInDeck(), table.LstPlayer);
+                tableData = new TableData(table);
                 if (table.PlayerPro != null) { tableData.setPlayerPro(table.PlayerPro); }
                 turnData.addTableData(tableData);
             }
@@ -177,9 +177,8 @@ namespace BlackJack
                 double previousSabotValue = 0;
                 if (nbTurn > 0) { previousSabotValue = gameData.LstTurnData[nbTurn].LstTable[id].SabotValue; }
                 TableData tableData = gameData.LstTurnData[nbTurn].LstTable[id++];
-                Hand handBank = tableData.HandBank;
-                tableUC.setBank(handBank.Value, handBank.getNbCard());
-                setPlayers(tableData, tableUC);
+                tableUC.setBank(tableData.HandBank);
+                tableUC.setPlayers(tableData);
                 playerProPlaying = (setPlayerPro(tableData, tableUC, previousSabotValue) || playerProPlaying);
                 tableUC.setSabotValue(tableData.SabotValue);
                 tableUC.setNbCard(tableData.NbCard);
@@ -188,8 +187,6 @@ namespace BlackJack
 
             lblNbTurnValue.Text = (nbTurn+ 1).ToString();
             setEnabledButton();
-
-
         }
 
         /// <summary>
@@ -201,9 +198,8 @@ namespace BlackJack
             if (!isPlaying)
             {
                 PlayerData playerData = gameData.LstTurnData[nbTurn].PlayerPro;
-                PlayerData playerPro = gameData.LstTurnData[nbTurn].PlayerPro;
-                playerProUC.setData(playerData.Cash, playerData.NbWin, playerData.NbEqual, playerData.NbLose);
-                frmData.setValueChart(playerData.NbWin, playerData.NbEqual, playerData.NbLose, nbTurn, playerData.Cash);
+                playerProUC.setData(playerData);
+                frmData.setValue(playerData,nbTurn + 1);
                 playerProUC.Visible = true;
             }
             else
@@ -233,54 +229,18 @@ namespace BlackJack
         }
 
         /// <summary>
-        /// Ajout d'un joueur Lamda au niveau graphique
-        /// </summary>
-        /// <param name="tableData"></param>
-        /// <param name="tableUC"></param>
-        private void setPlayers(TableData tableData, TableUC tableUC)
-        {
-            List<PlayerData> lstP = tableData.LstPlayer;
-            List<List<int>> lstPlayerValue = new List<List<int>>();
-            List<List<int>> lstPlayerNbCard = new List<List<int>>();
-            List<int> lstPlayerCash = new List<int>();
-            for (int i = 0; i < lstP.Count; i++)
-            {
-                List<HandData> lstHandPlayer = lstP[i].LstHand;
-                List<int> lstValue = new List<int>();
-                List<int> lstNbCard = new List<int>();
-                for (int j = 0; j < lstHandPlayer.Count; j++)
-                {
-                    lstValue.Add(lstHandPlayer[j].Value);
-                    lstNbCard.Add(lstHandPlayer[j].Nbcard);
-                }
-                lstPlayerValue.Add(lstValue);
-                lstPlayerNbCard.Add(lstNbCard);
-                lstPlayerCash.Add(lstP[i].Cash);
-            }
-            tableUC.setPlayers(lstPlayerValue, lstPlayerNbCard, lstPlayerCash);
-        }
-
-        /// <summary>
         /// Ajoute le joueurs pro dans une table (Graphiquement) que s'il est
         /// </summary>
         /// <param name="tableData"></param>
         /// <param name="tableUC"></param>
+        /// <param name="previousSabot"></param>
         /// <returns>Si le joueur pro est existant</returns>
         private bool setPlayerPro(TableData tableData, TableUC tableUC,double previousSabot)
         {
             if (tableData.PlayerPro != null)
             {
-                List<HandData> lstHandPlPro = tableData.PlayerPro.LstHand;
-                List<List<int>> lstHandIndxImg = new List<List<int>>();
-                List<int> lstValue = new List<int>();
-                List<int> lstNbCard = new List<int>();
-                for (int i = 0; i < lstHandPlPro.Count; i++)
-                {
-                    lstValue.Add(lstHandPlPro[i].Value);
-                    lstNbCard.Add(lstHandPlPro[i].Nbcard);
-                }
-                tableUC.setPlayerPro(lstValue, lstNbCard, tableData.PlayerPro.Cash);
-                frmData.setValueChart(tableData.PlayerPro.NbWin, tableData.PlayerPro.NbEqual, tableData.PlayerPro.NbLose,nbTurn, tableData.PlayerPro.Cash);
+                tableUC.setPlayerPro(tableData.PlayerPro);
+                frmData.setValue(tableData.PlayerPro,nbTurn + 1);
                 return true;
             }
             else
@@ -315,8 +275,7 @@ namespace BlackJack
         {
             for (int i = nbTurn; i < nbTurnMax - 2; i++)
             {
-                PlayerData playerPro = gameData.LstTurnData[i].PlayerPro;
-                frmData.setValueChart(playerPro.NbWin, playerPro.NbEqual, playerPro.NbLose, i, playerPro.Cash);
+                frmData.setValue(gameData.LstTurnData[i].PlayerPro, i + 1);
             }
             nbTurn = nbTurnMax -1;
             displayValue();

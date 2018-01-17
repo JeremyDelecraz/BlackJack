@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Data
 {
-    class GameData
+    public class GameData
     {
         public List<TurnData> LstTurnData { get; set; } = new List<TurnData>();
 

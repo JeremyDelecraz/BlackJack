@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlackJack.Class;
+using BlackJack.Data;
 
 namespace BlackJack.UserControls
 {
@@ -35,20 +36,17 @@ namespace BlackJack.UserControls
             }
         }
 
-        public void setPlayers(List<List<int>> lstValue, List<List<int>> lstNbCard, List<int> cash)
+        public void setPlayers(TableData table)
         {
             int id = 0;
-            String name = "";
             foreach (PlayerUC playerUC in gbxPlayer.Controls)
             {
-                name = "Player " + id;
-                ((PlayerUC)playerUC).setPlayer(lstValue[id], lstNbCard[id], cash[id],1,name);
-                id++;
+                ((PlayerUC)playerUC).setPlayer(table.LstPlayer[id],1, "Player " + id++);
             }
             Point p = new Point(5, 12); // Bank
         }
 
-        public void setPlayerPro(List<int> lstValue,List<int> lstNbCard, int cash)
+        public void setPlayerPro(PlayerData playerData)
         {
             if (playerPro == null)
             {
@@ -56,7 +54,7 @@ namespace BlackJack.UserControls
                 playerPro.Location = new Point(5, 12);
                 gbxPlayerPro.Controls.Add(playerPro);
             }
-            playerPro.setPlayer(lstValue, lstNbCard,cash, 0,"Player Pro");
+            playerPro.setPlayer(playerData, 0,"Player Pro");
         }
 
         public void setSabotValue(double sabotValue)
@@ -64,9 +62,10 @@ namespace BlackJack.UserControls
             lblSabotValue.BackColor = (sabotValue > PlayerPro.SABOT_TO_PLAY) ? Color.Green : (sabotValue > PlayerPro.SABOT_TO_STAY) ? Color.Orange: Color.Red;
             lblSabotValue.Text = Math.Round(sabotValue, 3).ToString();
         }
-        public void setBank(int value,int nbCard)
+
+        public void setBank(HandData hand)
         {
-            plBanUC.setHand(value, nbCard);
+            plBanUC.setHand(hand);
         }
 
         public void removePlayerPro()

@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using BlackJack.Data;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -70,13 +71,13 @@ namespace BlackJack
             });
         }
 
-        public void setValueChart(int nbWin,int nbEqual,int nbLose,int nbTurn,int cash)
+        public void setValue(PlayerData playerData,int nbTurn)
         {
-            pChart.Series[0].Values = new ChartValues<double> { nbWin };
-            pChart.Series[1].Values = new ChartValues<double> { nbEqual };
-            pChart.Series[2].Values = new ChartValues<double> { nbLose };
+            pChart.Series[0].Values = new ChartValues<double> { playerData.NbWin };
+            pChart.Series[1].Values = new ChartValues<double> { playerData.NbEqual };
+            pChart.Series[2].Values = new ChartValues<double> { playerData.NbLose };
             caChart.AxisX[0].Labels.Add(nbTurn.ToString());
-            caChart.Series[0].Values.Add((Double)cash);
+            caChart.Series[0].Values.Add((Double)playerData.Cash);
         }
 
         public void reset()
@@ -95,7 +96,7 @@ namespace BlackJack
                 if (caChart.AxisX[0].Labels.Count > 0)
                 {
                     caChart.AxisX[0].Labels.RemoveAt(caChart.AxisX[0].Labels.Count - 1);
-                    caChart.Series[0].Values.RemoveAt(caChart.AxisX[0].Labels.Count - 1);
+                    caChart.Series[0].Values.RemoveAt(caChart.Series[0].Values.Count - 1);
                 }
             }
         }

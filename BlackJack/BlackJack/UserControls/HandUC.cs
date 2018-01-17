@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackJack.Data;
 
 namespace BlackJack.UserControls
 {
@@ -17,10 +18,10 @@ namespace BlackJack.UserControls
             InitializeComponent();
         }
 
-        public void setCard(int value,int nbCard)
+        public void setCard(HandData hand)
         {
-            lblHandValue.Text = value.ToString();
-            if (value == 21 && nbCard == 2) { BackColor = Color.ForestGreen; }
+            lblHandValue.Text = hand.Value.ToString();
+            if (hand.Value == 21 && hand.Nbcard == 2) { BackColor = Color.ForestGreen; }
         }
     }
 }

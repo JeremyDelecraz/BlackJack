@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackJack.Data;
 
 namespace BlackJack.UserControls
 {
@@ -17,18 +18,17 @@ namespace BlackJack.UserControls
             InitializeComponent();
         }
 
-        public void setHands(List<int> lstValue, List<int> lstNbCard)
+        public void setHands(List<HandData> lstHand)
         {
             removeHand();
             int dist = 40;
             int x = 0;
             int y = 0;
-            int index = 0;
-            foreach (int value in lstValue)
+            foreach (HandData hand in lstHand)
             {
                 HandUC handUC = new HandUC();
                 handUC.Location = new Point(x, y);
-                handUC.setCard(value,lstNbCard[index++]);
+                handUC.setCard(hand);
                 Controls.Add(handUC);
                 x += dist;
             }

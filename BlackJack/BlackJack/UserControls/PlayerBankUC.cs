@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackJack.Data;
 
 namespace BlackJack.UserControls
 {
@@ -18,12 +19,12 @@ namespace BlackJack.UserControls
             InitializeComponent();
         }
 
-        public void setHand(int value,int nbCard)
+        public void setHand(HandData hand)
         {
             removeHand();
             handUC = new HandUC();
             handUC.Location = new Point(5, 18);
-            handUC.setCard(value,nbCard);
+            handUC.setCard(hand);
             Controls.Add(handUC);
         }
 

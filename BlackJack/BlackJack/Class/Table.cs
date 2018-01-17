@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class Table
+    public class Table
     {
         public static Random RAND = new Random();
         private Deck deck;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class Card
+    public class Card
     {
         public string Label { get; set; }
         public int CardValue { get; set; }
@@ -29,6 +29,11 @@ namespace BlackJack.Class
         public override bool Equals(Object c)
         {
             return Label.Equals(((Card)c).Label);
+        }
+
+        public override int GetHashCode()
+        {
+            return 981597221 + EqualityComparer<string>.Default.GetHashCode(Label);
         }
     }
 }

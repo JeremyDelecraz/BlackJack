@@ -100,7 +100,6 @@ H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.ListHan
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.PlayerBankUC.resources
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.PlayerUC.resources
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.HandUC.resources
-H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.CardUC.resources
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.TableUC.resources
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.GenerateResource.Cache
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache

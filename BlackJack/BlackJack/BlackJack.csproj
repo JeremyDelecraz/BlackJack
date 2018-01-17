@@ -144,12 +144,6 @@
     <Compile Include="UserControls\HandUC.Designer.cs">
       <DependentUpon>HandUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CardUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\CardUC.Designer.cs">
-      <DependentUpon>CardUC.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\TableUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,9 +179,6 @@
     <EmbeddedResource Include="UserControls\HandUC.resx">
       <DependentUpon>HandUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\CardUC.resx">
-      <DependentUpon>CardUC.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TableUC.resx">
       <DependentUpon>TableUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,165 +197,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Table.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_A.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_J.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_K.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_Q.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_A.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_J.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_K.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CA_Q.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_A.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_J.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_K.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CO_Q.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_A.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_J.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_K.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\P_Q.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T_8.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\UserLambda.png" />
   </ItemGroup>
   <ItemGroup>
@@ -372,9 +204,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UserPro.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\dos-web.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\First.png" />

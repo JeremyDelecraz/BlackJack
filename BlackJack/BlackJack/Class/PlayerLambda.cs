@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class PlayerLambda : Player
+    public class PlayerLambda : Player
     {
         private const int BET = 1000;
 

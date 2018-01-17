@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackJack.Data;
 
 namespace BlackJack.UserControls
 {
@@ -17,12 +18,12 @@ namespace BlackJack.UserControls
             InitializeComponent();
         }
 
-        public void setPlayer(List<int> lstValue, List<int> lstNbCard, int cash,int idProfImage, string namePlayer)
+        public void setPlayer(PlayerData playerData,int idProfImage, string namePlayer)
         {
-            lblCashValue.Text = cash.ToString();
+            lblCashValue.Text = playerData.Cash.ToString();
             lblNamePlayer.Text = namePlayer;
             pbxProfil.BackgroundImage = lstImageProfil.Images[idProfImage];
-            lstHandUC.setHands(lstValue, lstNbCard);
+            lstHandUC.setHands(playerData.LstHand);
         }
     }
 }

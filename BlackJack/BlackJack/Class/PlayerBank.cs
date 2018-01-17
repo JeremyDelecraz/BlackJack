@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class PlayerBank : Player
+    public class PlayerBank : Player
     {
         public PlayerBank(Table g) : base(g)
         {

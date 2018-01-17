@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class Player
+    public class Player
     {
         private const int BLACKJACK = 21;
         public int NbWin { get; private set; } = 0;

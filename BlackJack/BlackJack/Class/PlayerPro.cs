@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class PlayerPro : Player
+    public class PlayerPro : Player
     {
         public static int SABOT_TO_STAY = 2;
         public static int SABOT_TO_PLAY = 5;

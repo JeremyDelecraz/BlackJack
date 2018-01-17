@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Data
 {
-    class TurnData
+    public class TurnData
     {
         public List<TableData> LstTable { get; set; } = new List<TableData>();
         public PlayerData PlayerPro { get; set; } = null;
@@ -21,7 +21,7 @@ namespace BlackJack.Data
         
         public void setPlayerPro(PlayerPro playerPro)
         {
-            PlayerPro = new PlayerData(playerPro.Cash, playerPro.NbWin, playerPro.NbEqual, playerPro.NbLose, playerPro.LstHand);
+            PlayerPro = new PlayerData(playerPro);
         }
     }
 }

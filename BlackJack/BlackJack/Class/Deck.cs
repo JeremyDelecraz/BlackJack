@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class Deck
+    public class Deck
     {
         private List<String> LST_ONE_COLOR_DECK = new List<string> {"2","3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
         private const int NB_COLOR_DECK = 4;

@@ -7,34 +7,34 @@ using System.Threading.Tasks;
 
 namespace BlackJack.Class
 {
-    class TableData
+    public class TableData
     {
-        public Hand HandBank { get; set; }
+        public HandData HandBank { get; set; }
         public List<PlayerData> LstPlayer { get; set; } = new List<PlayerData>();
         public PlayerData PlayerPro { get; set; }
         public double SabotValue { get; set; }
         public int NbCard { get; set; }
 
-        public TableData(Hand handBank, double sabotValue,int nbCard, List<PlayerLambda> lstPlayer)
+        public TableData(Table table)
         {
-            HandBank = handBank;
-            SabotValue = sabotValue;
-            NbCard = nbCard;
+            HandBank = new HandData(table.getBankHand());
+            SabotValue = table.RealSabotValue;
+            NbCard = table.getNbCardInDeck();
             PlayerPro = null;
-            addPlayers(lstPlayer);
+            addPlayers(table.LstPlayer);
         }
 
         private void addPlayers(List<PlayerLambda> lstPlayer)
         {
             foreach (PlayerLambda p in lstPlayer)
             {
-                LstPlayer.Add(new PlayerData(p.Cash, p.NbWin, p.NbEqual, p.NbLose, p.LstHand));
+                LstPlayer.Add(new PlayerData(p));
             }
         }
 
         public void setPlayerPro(PlayerPro playerPro)
         {
-            PlayerPro = new PlayerData(playerPro.Cash, playerPro.NbWin, playerPro.NbEqual, playerPro.NbLose, playerPro.LstHand);
+            PlayerPro = new PlayerData(playerPro);
         }
     }
 }
