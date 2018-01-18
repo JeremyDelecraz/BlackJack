@@ -21,9 +21,16 @@ namespace BlackJack
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            FrmData pie = new FrmData();
-            FrmGame frmGame = new FrmGame((int)nupNbDeck.Value, (int)nupNbPlayer.Value, (int)nupNbTurn.Value, (int)nupNbTable.Value, (int)nupCash.Value,pie);
-            frmGame.Show();
+            try
+            {
+                FrmData pie = new FrmData();
+                FrmGame frmGame = new FrmGame((int)nupNbDeck.Value, (int)nupNbPlayer.Value, (int)nupNbTurn.Value, (int)nupNbTable.Value, (int)nupCash.Value, pie);
+                frmGame.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Le nombre de paquets n'est pas suffisant pour le nombre de joueurs","Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
     }
 }

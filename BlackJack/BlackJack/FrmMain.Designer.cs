@@ -64,13 +64,23 @@
             this.lblNbDeck.AutoSize = true;
             this.lblNbDeck.Location = new System.Drawing.Point(12, 9);
             this.lblNbDeck.Name = "lblNbDeck";
-            this.lblNbDeck.Size = new System.Drawing.Size(95, 13);
+            this.lblNbDeck.Size = new System.Drawing.Size(100, 13);
             this.lblNbDeck.TabIndex = 0;
-            this.lblNbDeck.Text = "Nombre de paquet";
+            this.lblNbDeck.Text = "Nombre de paquets";
             // 
             // nupNbDeck
             // 
             this.nupNbDeck.Location = new System.Drawing.Point(138, 7);
+            this.nupNbDeck.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.nupNbDeck.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nupNbDeck.Name = "nupNbDeck";
             this.nupNbDeck.Size = new System.Drawing.Size(78, 20);
             this.nupNbDeck.TabIndex = 1;
@@ -106,7 +116,7 @@
             // 
             this.nupNbTurn.Location = new System.Drawing.Point(138, 59);
             this.nupNbTurn.Maximum = new decimal(new int[] {
-            100000,
+            2000,
             0,
             0,
             0});
@@ -124,18 +134,18 @@
             this.lblNbPlayer.AutoSize = true;
             this.lblNbPlayer.Location = new System.Drawing.Point(12, 35);
             this.lblNbPlayer.Name = "lblNbPlayer";
-            this.lblNbPlayer.Size = new System.Drawing.Size(91, 13);
+            this.lblNbPlayer.Size = new System.Drawing.Size(96, 13);
             this.lblNbPlayer.TabIndex = 2;
-            this.lblNbPlayer.Text = "Nombre de joueur";
+            this.lblNbPlayer.Text = "Nombre de joueurs";
             // 
             // lblNbTurn
             // 
             this.lblNbTurn.AutoSize = true;
             this.lblNbTurn.Location = new System.Drawing.Point(12, 61);
             this.lblNbTurn.Name = "lblNbTurn";
-            this.lblNbTurn.Size = new System.Drawing.Size(80, 13);
+            this.lblNbTurn.Size = new System.Drawing.Size(85, 13);
             this.lblNbTurn.TabIndex = 4;
-            this.lblNbTurn.Text = "Nombre de tour";
+            this.lblNbTurn.Text = "Nombre de tours";
             // 
             // tmrTurn
             // 
@@ -146,15 +156,15 @@
             this.lblNbTable.AutoSize = true;
             this.lblNbTable.Location = new System.Drawing.Point(12, 87);
             this.lblNbTable.Name = "lblNbTable";
-            this.lblNbTable.Size = new System.Drawing.Size(85, 13);
+            this.lblNbTable.Size = new System.Drawing.Size(90, 13);
             this.lblNbTable.TabIndex = 6;
-            this.lblNbTable.Text = "Nombre de table";
+            this.lblNbTable.Text = "Nombre de tables";
             // 
             // nupNbTable
             // 
             this.nupNbTable.Location = new System.Drawing.Point(138, 85);
             this.nupNbTable.Maximum = new decimal(new int[] {
-            9,
+            20,
             0,
             0,
             0});
@@ -176,7 +186,7 @@
             // 
             this.nupCash.Location = new System.Drawing.Point(138, 111);
             this.nupCash.Maximum = new decimal(new int[] {
-            300000,
+            1000000,
             0,
             0,
             0});
@@ -199,9 +209,9 @@
             this.lblCashBase.AutoSize = true;
             this.lblCashBase.Location = new System.Drawing.Point(12, 113);
             this.lblCashBase.Name = "lblCashBase";
-            this.lblCashBase.Size = new System.Drawing.Size(72, 13);
+            this.lblCashBase.Size = new System.Drawing.Size(79, 13);
             this.lblCashBase.TabIndex = 26;
-            this.lblCashBase.Text = "Cash de base";
+            this.lblCashBase.Text = "Argent de base";
             // 
             // FrmMain
             // 

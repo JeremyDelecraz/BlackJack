@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace BlackJack
 {
@@ -69,13 +70,18 @@ namespace BlackJack
             {
                 Title = "Argent",
             });
+            caChart.DisableAnimations = true;
         }
 
-        public void setValue(PlayerData playerData,int nbTurn)
+        public void setValuePie(PlayerData playerData)
         {
             pChart.Series[0].Values = new ChartValues<double> { playerData.NbWin };
             pChart.Series[1].Values = new ChartValues<double> { playerData.NbEqual };
             pChart.Series[2].Values = new ChartValues<double> { playerData.NbLose };
+        }
+
+        public void addValueChart(PlayerData playerData, int nbTurn)
+        {
             caChart.AxisX[0].Labels.Add(nbTurn.ToString());
             caChart.Series[0].Values.Add((Double)playerData.Cash);
         }

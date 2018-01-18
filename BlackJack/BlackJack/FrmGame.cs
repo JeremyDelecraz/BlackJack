@@ -197,9 +197,10 @@ namespace BlackJack
         {
             if (!isPlaying)
             {
-                PlayerData playerData = gameData.LstTurnData[nbTurn].PlayerPro;
-                playerProUC.setData(playerData);
-                frmData.setValue(playerData,nbTurn + 1);
+                PlayerData playerProData = gameData.LstTurnData[nbTurn].PlayerPro;
+                playerProUC.setData(playerProData);
+                frmData.setValuePie(playerProData);
+                frmData.addValueChart(playerProData, nbTurn + 1);
                 playerProUC.Visible = true;
             }
             else
@@ -240,7 +241,8 @@ namespace BlackJack
             if (tableData.PlayerPro != null)
             {
                 tableUC.setPlayerPro(tableData.PlayerPro);
-                frmData.setValue(tableData.PlayerPro,nbTurn + 1);
+                frmData.setValuePie(tableData.PlayerPro);
+                frmData.addValueChart(tableData.PlayerPro, nbTurn + 1);
                 return true;
             }
             else
@@ -275,8 +277,9 @@ namespace BlackJack
         {
             for (int i = nbTurn; i < nbTurnMax - 2; i++)
             {
-                frmData.setValue(gameData.LstTurnData[i].PlayerPro, i + 1);
+                frmData.addValueChart(gameData.LstTurnData[i].PlayerPro, i+1);
             }
+
             nbTurn = nbTurnMax -1;
             displayValue();
         }
@@ -297,10 +300,6 @@ namespace BlackJack
                 btnPausePlay.Image = (tmrTurn.Enabled) ? Properties.Resources.Pause : Properties.Resources.Play;
             }
             setEnabledButton();
-            //btnLast.Enabled = !tmrTurn.Enabled;
-            //btnFirst.Enabled = !tmrTurn.Enabled;
-            //btnPrevious.Enabled = !tmrTurn.Enabled;
-            //btnNext.Enabled = !tmrTurn.Enabled;
         }
         #endregion
 
