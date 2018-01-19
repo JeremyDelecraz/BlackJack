@@ -45,7 +45,6 @@ D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\BlackJack.p
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csprojResolveAssemblyReference.cache
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.FrmMain.resources
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.Properties.Resources.resources
-D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.CardUC.resources
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.TableUC.resources
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.GenerateResource.Cache
 D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.csproj.CoreCompileInputs.cache
@@ -142,3 +141,14 @@ H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.pdb
 H:\BlackJack-master\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.xml
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.FrmData.resources
 H:\BlackJack-master\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.PlayerProUC.resources
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.dll
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.dll
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.dll
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.pdb
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.xml
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.pdb
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.WinForms.xml
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.pdb
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\bin\Debug\LiveCharts.Wpf.xml
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.FrmData.resources
+D:\01_Ecole\HEG\5_Semestre\Probabilite\BlackJack\BlackJack\obj\Debug\BlackJack.UserControls.PlayerProUC.resources

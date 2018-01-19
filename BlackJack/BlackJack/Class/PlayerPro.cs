@@ -12,7 +12,7 @@ namespace BlackJack.Class
         public static int SABOT_TO_PLAY = 5;
         private const int SABOT_TO_PLAY2 = 7;
         private const int SABOT_TO_PLAY3 = 13;
-        private const int SABOT_TO_PLAY4 = 16;
+        private const int SABOT_TO_PLAY4 = 17;
         private const int MAX_BET_STAY = 2;
         private const int MAX_BET = 6;
         private const int MAX_BET2 = 10;

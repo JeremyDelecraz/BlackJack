@@ -85,7 +85,7 @@
             this.nupNbDeck.Size = new System.Drawing.Size(78, 20);
             this.nupNbDeck.TabIndex = 1;
             this.nupNbDeck.Value = new decimal(new int[] {
-            5,
+            2,
             0,
             0,
             0});
@@ -107,7 +107,7 @@
             this.nupNbPlayer.Size = new System.Drawing.Size(78, 20);
             this.nupNbPlayer.TabIndex = 3;
             this.nupNbPlayer.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -177,7 +177,7 @@
             this.nupNbTable.Size = new System.Drawing.Size(78, 20);
             this.nupNbTable.TabIndex = 7;
             this.nupNbTable.Value = new decimal(new int[] {
-            6,
+            20,
             0,
             0,
             0});

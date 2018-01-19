@@ -14,6 +14,7 @@ namespace BlackJack.Data
         public int NbWin { get; set; }
         public int NbEqual { get; set; }
         public int NbLose { get; set; }
+        public int NbInsurance { get; set; }
 
         public PlayerData(Player p)
         {
@@ -21,6 +22,7 @@ namespace BlackJack.Data
             NbWin = p.NbWin;
             NbEqual = p.NbEqual;
             NbLose = p.NbLose;
+            NbInsurance = p.NbInsurance;
             addLstHand(p.LstHand);
         }
 

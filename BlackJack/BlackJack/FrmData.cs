@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
+using System.Windows.Media;
 
 namespace BlackJack
 {
@@ -32,16 +32,25 @@ namespace BlackJack
                 {
                     Title = "Gagnant",
                     Values = new ChartValues<double> {0},
+                    Fill =  (SolidColorBrush)new BrushConverter().ConvertFrom("#2ecc71")
                 },
                 new PieSeries
                 {
                     Title = "Egalité",
                     Values = new ChartValues<double> {0},
+                    Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#f1c40f")
                 },
                 new PieSeries
                 {
                     Title = "Perdant",
                     Values = new ChartValues<double> {0},
+                    Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#e74c3c")
+                },
+                new PieSeries
+                {
+                    Title = "Assurance",
+                    Values = new ChartValues<double> {0},
+                    Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#2c3e50")
                 },
             };
 
@@ -56,7 +65,7 @@ namespace BlackJack
                 new LineSeries
                 {
                     Title = "ARGENT",
-                    Values = new ChartValues<double> {}
+                    Values = new ChartValues<double> {}                    
                 }
             };
 
@@ -78,6 +87,7 @@ namespace BlackJack
             pChart.Series[0].Values = new ChartValues<double> { playerData.NbWin };
             pChart.Series[1].Values = new ChartValues<double> { playerData.NbEqual };
             pChart.Series[2].Values = new ChartValues<double> { playerData.NbLose };
+            pChart.Series[3].Values = new ChartValues<double> { playerData.NbInsurance };
         }
 
         public void addValueChart(PlayerData playerData, int nbTurn)
@@ -93,6 +103,7 @@ namespace BlackJack
             pChart.Series[0].Values = new ChartValues<double> { 0 };
             pChart.Series[1].Values = new ChartValues<double> { 0 };
             pChart.Series[2].Values = new ChartValues<double> { 0 };
+            pChart.Series[3].Values = new ChartValues<double> { 0 };
         }
 
         public void previous()

@@ -12,6 +12,7 @@ namespace BlackJack.Class
         public int NbWin { get; private set; } = 0;
         public int NbLose { get; private set; } = 0;
         public int NbEqual { get; private set; } = 0;
+        public int NbInsurance { get; private set; } = 0;
         public int Cash { get; protected set; }
         public List<Hand> LstHand { get; protected set; } = new List<Hand>();
         protected List<int> lstBetValue = new List<int>();
@@ -100,7 +101,7 @@ namespace BlackJack.Class
                         Cash += BetValueInsurance * 3;
                         Bank.Cash -= BetValueInsurance * 2;
                         Bank.Cash += lstBetValue[i];
-                        NbEqual++;
+                        NbInsurance++;
                     }
                     else
                     {
@@ -143,7 +144,7 @@ namespace BlackJack.Class
         /// <param name="idBet">L'id de la mise</param>
         public void equalCash(int idBet)
         {
-            this.Cash += lstBetValue[idBet];
+            Cash += lstBetValue[idBet];
             NbEqual++;
         }
 
