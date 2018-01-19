@@ -26,6 +26,19 @@ namespace BlackJack.Data
             addLstHand(p.LstHand);
         }
 
+        public PlayerData(int nbWin,int nbEqual, int nbLose,int nbInsurance)
+        {
+            NbWin = nbWin;
+            NbEqual = nbEqual;
+            NbLose = nbLose;
+            NbInsurance = nbInsurance;
+        }
+
+        public PlayerData(int cash)
+        {
+            Cash = cash;
+        }
+
         public void addLstHand(List<Hand> lstHand)
         {
             foreach (Hand h in lstHand)

@@ -20,13 +20,18 @@ namespace BlackJack
         public FrmData()
         {
             InitializeComponent();
-            initPie();
+            pChartPro.Series = initPieData();
+            pChartPlayerLambda.Series = initPieData();
+            pChartPro.LegendLocation = LegendLocation.Bottom;
+            pChartPlayerLambda.LegendLocation = LegendLocation.Bottom;
+            pChartPro.DisableAnimations = true;
+            pChartPlayerLambda.DisableAnimations = true;
             initCartesian();
         }
 
-        private void initPie()
+        private SeriesCollection initPieData()
         {
-            pChart.Series = new SeriesCollection
+            return new SeriesCollection
             {
                 new PieSeries
                 {
@@ -53,9 +58,6 @@ namespace BlackJack
                     Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#2c3e50")
                 },
             };
-
-            pChart.LegendLocation = LegendLocation.Bottom;
-            pChart.DisableAnimations = true;
         }
 
         private void initCartesian()
@@ -64,8 +66,13 @@ namespace BlackJack
             {
                 new LineSeries
                 {
-                    Title = "ARGENT",
+                    Title = "Argent Player Pro",
                     Values = new ChartValues<double> {}                    
+                },
+                new LineSeries
+                {
+                    Title = "Argent Player Lambda",
+                    Values = new ChartValues<double> {}
                 }
             };
 
@@ -82,7 +89,13 @@ namespace BlackJack
             caChart.DisableAnimations = true;
         }
 
-        public void setValuePie(PlayerData playerData)
+        public void setValuePie(PlayerData playerPro,PlayerData playerLambda)
+        {
+            setValuePChart(pChartPro, playerPro);
+            setValuePChart(pChartPlayerLambda, playerLambda);
+        }
+
+        private void setValuePChart(LiveCharts.WinForms.PieChart pChart,PlayerData playerData)
         {
             pChart.Series[0].Values = new ChartValues<double> { playerData.NbWin };
             pChart.Series[1].Values = new ChartValues<double> { playerData.NbEqual };
@@ -90,20 +103,22 @@ namespace BlackJack
             pChart.Series[3].Values = new ChartValues<double> { playerData.NbInsurance };
         }
 
-        public void addValueChart(PlayerData playerData, int nbTurn)
+        public void addValueChart(PlayerData playerPro,PlayerData playerLambda, int nbTurn)
         {
             caChart.AxisX[0].Labels.Add(nbTurn.ToString());
-            caChart.Series[0].Values.Add((Double)playerData.Cash);
+            caChart.Series[0].Values.Add((Double)playerPro.Cash);
+            caChart.Series[1].Values.Add((Double)playerLambda.Cash);
         }
 
         public void reset()
         {
             caChart.AxisX[0].Labels.Clear();
             caChart.Series[0].Values.Clear();
-            pChart.Series[0].Values = new ChartValues<double> { 0 };
-            pChart.Series[1].Values = new ChartValues<double> { 0 };
-            pChart.Series[2].Values = new ChartValues<double> { 0 };
-            pChart.Series[3].Values = new ChartValues<double> { 0 };
+            caChart.Series[1].Values.Clear();
+            pChartPro.Series[0].Values = new ChartValues<double> { 0 };
+            pChartPro.Series[1].Values = new ChartValues<double> { 0 };
+            pChartPro.Series[2].Values = new ChartValues<double> { 0 };
+            pChartPro.Series[3].Values = new ChartValues<double> { 0 };
         }
 
         public void previous()
@@ -114,6 +129,7 @@ namespace BlackJack
                 {
                     caChart.AxisX[0].Labels.RemoveAt(caChart.AxisX[0].Labels.Count - 1);
                     caChart.Series[0].Values.RemoveAt(caChart.Series[0].Values.Count - 1);
+                    caChart.Series[1].Values.RemoveAt(caChart.Series[1].Values.Count - 1);
                 }
             }
         }

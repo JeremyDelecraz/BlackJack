@@ -42,7 +42,7 @@ namespace BlackJack
             initDisplayTable(nbTable, nbPlayer);
             tmrTurn.Enabled = true;
             frmData.StartPosition = FormStartPosition.Manual;
-            frmData.Location = new Point( 0, Size.Height -50);
+            frmData.Location = new Point( 0, Size.Height);
         }
 
         private void initDisplayTable(int nbTable,int nbPlayer)
@@ -52,7 +52,7 @@ namespace BlackJack
             int distX = 500;
             int distY = 370;
             int width = Screen.PrimaryScreen.Bounds.Size.Width / distY ;
-            Size = new Size((width - 1) * distY + 50, Screen.PrimaryScreen.Bounds.Size.Height - frmData.Size.Height);
+            Size = new Size((width - 1) * distY + 50, Screen.PrimaryScreen.Bounds.Size.Height - frmData.Size.Height - 50);
 
             for (int i = 0; i < nbTable; i++)
             {
@@ -198,15 +198,40 @@ namespace BlackJack
             if (!isPlaying)
             {
                 PlayerData playerProData = gameData.LstTurnData[nbTurn].PlayerPro;
+                frmData.setValuePie(playerProData, getAverageWinLosePlayer());
                 playerProUC.setData(playerProData);
-                frmData.setValuePie(playerProData);
-                frmData.addValueChart(playerProData, nbTurn + 1);
+                frmData.addValueChart(playerProData, getAverageCash(), nbTurn + 1);
                 playerProUC.Visible = true;
             }
             else
             {
                 playerProUC.Visible = false;
             }
+        }
+
+        private PlayerData getAverageWinLosePlayer()
+        {
+            int nbWin = 0, nbEqual = 0, nbLose = 0, nbInsurance = 0, nbTurnP = 0;
+            List<TableData> lstTable = gameData.LstTurnData[nbTurn].LstTable;
+            lstTable.ForEach(t => t.LstPlayer.ForEach(p => {
+                nbWin += p.NbWin;
+                nbEqual += p.NbEqual;
+                nbLose += p.NbLose;
+                nbInsurance += p.NbInsurance;
+                nbTurnP++;
+            }));
+            return new PlayerData(nbWin / nbTurnP, nbEqual / nbTurnP, nbLose / nbTurnP, nbInsurance / nbTurnP);
+        }
+
+        private PlayerData getAverageCash()
+        {
+            int cash = 0, nbTurnP = 0;
+            List<TableData> lstTable = gameData.LstTurnData[nbTurn].LstTable;
+            lstTable.ForEach(t => t.LstPlayer.ForEach(p => {
+                cash += p.Cash;
+                nbTurnP++;
+            }));
+            return new PlayerData(cash/ nbTurnP);
         }
 
         /// <summary>
@@ -241,8 +266,8 @@ namespace BlackJack
             if (tableData.PlayerPro != null)
             {
                 tableUC.setPlayerPro(tableData.PlayerPro);
-                frmData.setValuePie(tableData.PlayerPro);
-                frmData.addValueChart(tableData.PlayerPro, nbTurn + 1);
+                frmData.setValuePie(tableData.PlayerPro, getAverageWinLosePlayer());
+                frmData.addValueChart(tableData.PlayerPro, getAverageCash(), nbTurn + 1);
                 return true;
             }
             else
@@ -275,9 +300,10 @@ namespace BlackJack
 
         private void btnLast_Click(object sender, EventArgs e)
         {
-            for (int i = nbTurn; i < nbTurnMax - 2; i++)
+            while(nbTurn < nbTurnMax - 2)
             {
-                frmData.addValueChart(gameData.LstTurnData[i].PlayerPro, i+1);
+                frmData.addValueChart(gameData.LstTurnData[nbTurn].PlayerPro, getAverageCash(), nbTurn + 1);
+                nbTurn++;
             }
 
             nbTurn = nbTurnMax -1;
